@@ -4,7 +4,7 @@ import Home from './views/Home.vue'
 import log from './components/log.vue'
 import seat from './components/seat.vue'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
