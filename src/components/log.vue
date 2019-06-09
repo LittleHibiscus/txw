@@ -3,7 +3,7 @@
         <div class="bg">
             <div class="bg_img">
                 <a href="javascript:;">  
-                    <img src="../assets/img/logo-white.png" alt=""> 
+                    <img src="img/log/logo-white.png" alt=""> 
                 </a>
             </div> 
             <!--登陆界面-->

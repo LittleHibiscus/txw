@@ -12,7 +12,7 @@
             <input type="text" placeholder="请输入您的手机号">
             <div class="picNum">
                 <input type="text" placeholder="图像码">
-                <img src="../../assets/img/picNum.png" alt="">
+                <img src="img/log/picNum.png" alt="">
             </div>
             <div class="btnNum">
                 <input type="text" placeholder="验证码">
