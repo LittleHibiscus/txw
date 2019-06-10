@@ -1,3 +1,5 @@
+[TOC]
+
 # 组件说明
 
 seat.vue是选座组件！- 马佳威
@@ -11,6 +13,7 @@ css文件暂时放在了assets里 - 马佳威
 # txw
 
 ## Project setup
+
 ```
 npm install
 ```

@@ -10,10 +10,8 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // 所有路由的头部 尾部
-    {path: "/", components: { Header, Footer } },
     {path:'/log',component:log},
     {path:'/seat',component:seat},
-
+    {path: "/", components: {} },
   ]
 });
