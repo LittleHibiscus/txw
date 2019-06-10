@@ -15,7 +15,7 @@
         </div>
         <div class="login_input">
             <input type="text" placeholder="用户名/邮箱/手机号">
-            <input type="text" placeholder="登陆密码">
+            <input type="password" placeholder="登陆密码">
         </div>
         <button class="login_sub">登陆</button>
         <div class="login_chb">
@@ -38,7 +38,7 @@
     }
 </script>
 <style scoped>
-@import "../../assets/css/log/login.css"
+@import "../../../../public/css/log/login.css"
 /*
     .login{
         display:flex;

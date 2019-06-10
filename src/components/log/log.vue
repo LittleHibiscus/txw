@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/log/log.css"
+@import "../../../public/css/log/log.css"
 /*
     .bg{
         width:1510px;

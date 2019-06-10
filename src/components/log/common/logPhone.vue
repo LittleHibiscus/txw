@@ -5,8 +5,8 @@
         <h4>注册即可永久保存您的查询信息</h4>
         <div class="loginEmail_input" v-show="loginEmail">
             <input type="text" placeholder="请输入您的邮箱">
-            <input type="text" placeholder="设置登陆密码">
-            <input type="text" placeholder="确认您的密码">
+            <input type="password" placeholder="设置登陆密码">
+            <input type="password" placeholder="确认您的密码">
         </div>
         <div class="loginPhone_input" v-show="loginPhone">
             <input type="text" placeholder="请输入您的手机号">
@@ -18,7 +18,7 @@
                 <input type="text" placeholder="验证码">
                 <button>免费获取</button>
             </div>
-            <input type="text" placeholder="设置登陆密码">
+            <input type="password" placeholder="设置登陆密码">
         </div>
         <div class="loginPhone_question">
             <div class="question1">
@@ -71,7 +71,7 @@
     }
 </script>
 <style scoped>
-@import "../../assets/css/log/logPhone.css"
+@import "../../../../public/css/log/logPhone.css"
 /*
     .loginPhone{
         display:flex;

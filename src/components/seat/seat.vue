@@ -25,8 +25,8 @@
                 @click="toEN" :class="isCN?``:`clicking`">
                 国际航空公司
                 </a>
-                <hr>
             </div>
+            <hr>
             <div class="wrap_pic1" v-if="isCN">
                 <a :href="item.href" v-for="(item,index) of CNlist" :key="index">
                     <img :src="`./${item.src1}`">
@@ -104,11 +104,13 @@
     .watch{
         display:flex;
         text-align:center;
+        margin-top:30px;
+        margin-bottom:30px;
     }
     .watch_left{
-        width:30%;
+        width:25%;
         text-align:left;
-        margin-left:10%;
+        margin-left:13%;
     }
     .watch_left>span{
         font-size:12px
@@ -116,12 +118,14 @@
     .watch_right{
         width:50%;
         text-align:left;
-        margin-left:5%;
+        margin-left:4%;
+    }
+    .watch_left>h3,.watch_right>h3{
+        margin-bottom:10px;
     }
     .wrap_tab{
         margin-top:30px;
-        margin-left:10%;
-        margin-right:10%;
+        margin-bottom:10px;
         text-align:left;
     }
     .wrap_tab>span{
@@ -146,10 +150,10 @@
         background:#00b2d6;
     }
     .wrap_pic1,.wrap_pic2{
-        margin-left:10%;
-        margin-right:10%;
         display:flex;
         flex-wrap: wrap;
+        margin-top:10px;
+        margin-bottom:10px;
         border-top:1px solid #d9d9d9;
         border-left:1px solid #d9d9d9;
     }
