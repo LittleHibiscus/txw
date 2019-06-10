@@ -34,9 +34,9 @@
     </div>
 </template>
 <script>
-import login from "./common/login";
-import logup from "./common/logup";
-import logPhone from "./common/logPhone";
+import login from "../components/log/login";
+import logup from "../components/log/logup";
+import logPhone from "../components/log/logPhone";
 export default {
     data(){
         return{
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../public/css/log/log.css"
+@import "../../public/css/log/log.css"
 /*
     .bg{
         width:1510px;

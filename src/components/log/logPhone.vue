@@ -71,7 +71,7 @@
     }
 </script>
 <style scoped>
-@import "../../../../public/css/log/logPhone.css"
+@import "../../../public/css/log/logPhone.css"
 /*
     .loginPhone{
         display:flex;
