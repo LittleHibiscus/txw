@@ -38,7 +38,7 @@
     }
 </script>
 <style scoped>
-@import "../../../../public/css/log/login.css"
+@import "../../../public/css/log/login.css"
 /*
     .login{
         display:flex;
