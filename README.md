@@ -8,7 +8,7 @@ log.vue是登陆&注册组件！- 马佳威
 
 img放在了public里 - 马佳威
 
-css文件暂时放在了assets里 - 马佳威
+css文件都放在了public里 - 马佳威
 
 # txw
 
