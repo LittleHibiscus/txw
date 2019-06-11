@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .icon_flight {
-  background-image: url(../../src/assets/account-icon-list.png);
+  background-image: url(../../src/components/assets/account-icon-list.png);
   background-position: -1px -1px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -12,7 +12,7 @@
 }
 
 .icon_guzhu {
-  background-image: url(../../src/assets/account-icon-list.png);
+  background-image: url(../../src/components/assets/account-icon-list.png);
   background-position: -1px -36px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -23,7 +23,7 @@
 }
 
 .icon_fromApp {
-  background-image: url(../../src/assets/account-icon-list.png);
+  background-image: url(../../src/components/assets/account-icon-list.png);
   background-position: -1px -74px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -34,7 +34,7 @@
 }
 
 .icon_user {
-  background-image: url(../../src/assets/account-icon-list.png);
+  background-image: url(../../src/components/assets/account-icon-list.png);
   background-position: -1px -110px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -46,7 +46,7 @@
 
 
 .user-icon {
-  background: url(../../src/assets/user-icon.png) no-repeat;
+  background: url(../../src/components/assets/user-icon.png) no-repeat;
   width: 20px;
   height: 20px;
   display: inline-block;
