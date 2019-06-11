@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import appHeader from "./components/Header/Header";
-import appFooter from "./components/Footer/Footer";
+import appHeader from "@/views/Header";
+import appFooter from "@/views/Footer";
 import "../public/css/normalize.css";
 import "../public/css/base.css";
 import "../public/css/icon.css";

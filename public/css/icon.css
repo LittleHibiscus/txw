@@ -12,7 +12,11 @@
 }
 
 .icon_guzhu {
+<<<<<<< HEAD
   background-image: url(../../src/components/assets/account-icon-list.png);
+=======
+  background-image: url('../../src/assets/account-icon-list.png');
+>>>>>>> c875c96b8b63072c0c04c355b64e01ba836f59da
   background-position: -1px -36px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -23,7 +27,11 @@
 }
 
 .icon_fromApp {
+<<<<<<< HEAD
   background-image: url(../../src/components/assets/account-icon-list.png);
+=======
+  background-image: url('../../src/assets/account-icon-list.png');
+>>>>>>> c875c96b8b63072c0c04c355b64e01ba836f59da
   background-position: -1px -74px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -34,7 +42,11 @@
 }
 
 .icon_user {
+<<<<<<< HEAD
   background-image: url(../../src/components/assets/account-icon-list.png);
+=======
+  background-image: url('../../src/assets/account-icon-list.png');
+>>>>>>> c875c96b8b63072c0c04c355b64e01ba836f59da
   background-position: -1px -110px;
   background-repeat: no-repeat;
   display: inline-block;
@@ -46,7 +58,11 @@
 
 
 .user-icon {
+<<<<<<< HEAD
   background: url(../../src/components/assets/user-icon.png) no-repeat;
+=======
+  background: url('../../src/assets/user-icon.png') no-repeat;
+>>>>>>> c875c96b8b63072c0c04c355b64e01ba836f59da
   width: 20px;
   height: 20px;
   display: inline-block;
