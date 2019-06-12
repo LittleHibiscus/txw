@@ -44,7 +44,7 @@
     background-color:#009dbd;
 }
 .or{
-    margin:40px 130px 40px 130px;
+    margin:30px 130px 30px 130px;
     height:1px;
     width:300px;
     background-color:rgba(182, 177, 189, 0.5);
@@ -60,6 +60,7 @@
 .login_input{
     display:flex;
     flex-direction:column;
+    position: relative;
 }
 .login_input>input{
     width:300px;
@@ -68,10 +69,26 @@
     padding-left:10px;
     cursor:pointer;
     border:1px solid #ddd;
-    font-size:14px
+    font-size:14px;
+
 }
 .login_input>input:hover{
     border:1px solid #00b2d6
+}
+/*当输入成功*/
+.imgSuc1{
+    position: absolute;
+    left:93%;
+    top:19px;
+}
+.imgSuc2{
+    position: absolute;
+    left:93%;
+    top:73px;
+}
+/*当输入失败*/
+.login_fail{
+    border:1px solid #d32a2e !important;
 }
 .login_chb{
     width:300px;
@@ -99,4 +116,10 @@
 }
 .login>h2{
     margin-top:40px;
+    
+}
+.alerm{
+    font-size:12px;
+    color:#eb423f;
+    height:13.6px;
 }
