@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import navbar from "@/components/Header/navbar";
-import login from "@/components/Header/login";
-import logo from "@/components/Header/logo";
+import navbar from "@/components/header/navbar";
+import login from "@/components/header/login";
+import logo from "@/components/header/logo";
 export default {
   data() {
     return {};
