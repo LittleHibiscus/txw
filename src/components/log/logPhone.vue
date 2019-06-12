@@ -3,6 +3,7 @@
         <p class="loginPhone_logup"><a href="javascript:;" @click="tologup">☚其他方式注册</a></p>
         <h2>{{msg}}注册</h2>
         <h4>注册即可永久保存您的查询信息</h4>
+        <div class="alerm">密码必须包含字母和数字且长度在8-32位之间</div>
         <div class="loginEmail_input" v-show="loginEmail">
             <input type="text" placeholder="请输入您的邮箱">
             <input type="password" placeholder="设置登陆密码">
@@ -71,7 +72,8 @@
     }
 </script>
 <style scoped>
-@import "../../../public/css/log/logPhone.css"
+@import "../../../public/css/log/logPhone.css";
+
 /*
     .loginPhone{
         display:flex;
