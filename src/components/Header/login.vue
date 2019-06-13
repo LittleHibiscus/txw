@@ -10,9 +10,9 @@
       <div class="mgt1">
         <!-- 未登录时状态 -->
         <div class="clearfix">
-          <a class="fl mgl5">登录</a>
+          <router-link to="/log" class="fl mgl5">登录</router-link>
           <span class="fl mgl5">|</span>
-          <a href="javascript:;" class="fl mgl5" target="_blank">注册</a>
+          <router-link to="/log" class="fl mgl5">注册</router-link>
         </div>
         <!-- 登陆后的用户名 -->
         <div id="account-username" class="clearfix none">

@@ -1,7 +1,13 @@
 // 头部导航栏列表
 <template>
   <nav>
-    <a href="javascript:;" v-for="(t,i) of nav" :key="i" :class="{'on':i==SelectedItem}" @click="changeSelectItem(i)">{{t}}</a>
+    <a
+      href="javascript:;"
+      v-for="(t,i) of nav"
+      :key="i"
+      :class="{'on':i==SelectedItem}"
+      @click="changeSelectItem(i)"
+    >{{t}}</a>
     <!-- <a href="javascript:;">酒店</a>
     <a href="javascript:;">租车</a>
     <a href="javascript:;">度假</a>
@@ -20,8 +26,8 @@ export default {
       SelectedItem: 0
     };
   },
-  methods:{
-    changeSelectItem(index){
+  methods: {
+    changeSelectItem(index) {
       this.SelectedItem = index;
     }
   }
@@ -42,7 +48,7 @@ nav {
   line-height: 40px;
   min-width: 550px;
   position: relative;
-  z-index: 99;
+  /* z-index: 99; */
   margin-top: 20px;
   font-size: 16px;
   font-family: Microsoft YaHei, Arial, STXihei, "微软雅黑";

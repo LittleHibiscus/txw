@@ -12,18 +12,23 @@
             value="中国(CN)"
             autocomplete="off"
           >
-          <input type="hidden" id="depCityCountry" value="中国" autocomplete="off">
-          <input type="hidden" id="depCityCode" value="CN" autocomplete="off">
-          <input type="hidden" id="depCityCode4" value>
+
           <i class="origin-icon"></i>
         </div>
         <a class="swap-exchange">
           <i class="exchange-icon"></i>
         </a>
         <div class="destination fr">
-          <label class="place-label">目的城市</label>
-          <span class="anywhere">所有地点</span>
-          <input type="text" id="dstCity" class="tt-input js-city default" value autocomplete="off">
+          <label class="place-label" :value="destinationCity">目的城市</label>
+          <span class="anywhere" v-show="showAnywhere">所有地点</span>
+          <input
+            type="text"
+            id="dstCity"
+            class="tt-input js-city default"
+            @focus="showAnywhere=false"
+            @blur="showAnywhere=true"
+            autocomplete="off"
+          >
           <input type="hidden" id="dstCityCountry" value autocomplete="off">
           <input type="hidden" id="dstCityCode" value autocomplete="off">
           <input type="hidden" id="dstCityCode4" value>
@@ -34,26 +39,26 @@
         <div class="search-dates">
           <div class="depart fl">
             <label class="place-label">去程时间</label>
-            <input
-              type="text"
-              id="departDate"
-              value="2019-06-12"
-              data-preval="2019-06-12"
+            <!-- <input
+              value="2019-06-16"
+              data-preval="2019-06-16"
               autocomplete="off"
               readonly="readonly"
-            >
+            >-->
+            <date-picker :value="date"></date-picker>
             <i class="dates-icon"></i>
           </div>
           <div class="return fr">
             <label class="place-label">回程时间</label>
-            <input
+            <!-- <input
               type="text"
               id="returnDate"
               value="2019-06-16"
               data-preval="2019-06-16"
               autocomplete="off"
               readonly="readonly"
-            >
+            >-->
+            <date-picker :value="date"></date-picker>
             <i class="dates-icon"></i>
           </div>
         </div>
@@ -203,16 +208,28 @@
         <input type="button" class="add-route-button" id="destinaion-add" value="增加航程">
       </div>
       <div class="search-pax-cabin-class fl relative" id="option-passengers-m"></div>
-      <large-button></large-button>
+      <button class="large-buttonB"></button>
     </section>
   </div>
 </template>
 
 <script>
-import largeButton from "./large-button";
 import searchOptionSwitch from "./search-option-switch";
+import datePicker from "./DatePicker";
 export default {
-  components: { searchOptionSwitch, largeButton }
+  data() {
+    return {
+      date: "",
+      // 所有地点胶囊
+      showAnywhere: true,
+      // 目的城市
+      destinationCity: ""
+    };
+  },
+  components: {
+    searchOptionSwitch,
+    datePicker
+  }
 };
 </script>
 
@@ -443,4 +460,6 @@ label {
   background-image: linear-gradient(to top, #00d775, #00d775);
   background-color: #00d775;
 }
+/* 自定义 
+   ========================================================================== */
 </style>
