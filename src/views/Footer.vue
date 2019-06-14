@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import listItem from "@/components/footer/listItem";
+import listItem from "@/components/Footer/listItem";
 export default {
   components: { listItem }
 };
