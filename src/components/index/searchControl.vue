@@ -455,7 +455,7 @@ label {
   right: 16%;
   content: "";
 }
-.large-buttonB::hover {
+.large-buttonB:hover {
   background-color: -webkit-linear-gradient(to top, #00d775, #00d775);
   background-image: linear-gradient(to top, #00d775, #00d775);
   background-color: #00d775;
