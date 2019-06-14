@@ -45,7 +45,7 @@
               autocomplete="off"
               readonly="readonly"
             >-->
-            <date-picker :value="date"></date-picker>
+            <date-picker v-model="date"></date-picker>
             <i class="dates-icon"></i>
           </div>
           <div class="return fr">
@@ -58,7 +58,7 @@
               autocomplete="off"
               readonly="readonly"
             >-->
-            <date-picker :value="date"></date-picker>
+            <date-picker v-model="date"></date-picker>
             <i class="dates-icon"></i>
           </div>
         </div>
