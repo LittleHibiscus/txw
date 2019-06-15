@@ -3,14 +3,21 @@
         <p class="loginPhone_logup"><a href="javascript:;" @click="tologup">☚其他方式注册</a></p>
         <h2>{{msg}}注册</h2>
         <h4>注册即可永久保存您的查询信息</h4>
-        <div class="alerm">密码必须包含字母和数字且长度在8-32位之间</div>
+        <!--邮箱方式-->
         <div class="loginEmail_input" v-show="loginEmail">
-            <input type="text" placeholder="请输入您的邮箱">
-            <input type="password" placeholder="设置登陆密码">
-            <input type="password" placeholder="确认您的密码">
+            <div class="alerm">{{alermMsg1}}</div>
+            <input type="text" placeholder="请输入您的邮箱" @blur="blurEmail" v-model="emailText"
+            :class="noEmailClick? ``: (blurEmailSuc? `login_Suc` : `login_fail`)">
+            <input type="password" placeholder="设置登陆密码" @blur="blurPwd1" v-model="Pwd1Text"
+            :class="noPwd1Click? ``: (blurPwd1Suc? `login_Suc` : `login_fail`)">
+            <input type="password" placeholder="确认您的密码" @blur="blurPwd2" v-model="Pwd2Text"
+            :class="noPwd2Click? ``: (blurPwd2Suc? `login_Suc` : `login_fail`)">
         </div>
+        <!--手机号方式-->
         <div class="loginPhone_input" v-show="loginPhone">
-            <input type="text" placeholder="请输入您的手机号">
+            <div class="alerm">{{alermMsg2}}</div>
+            <input type="text" placeholder="请输入您的手机号" @blur="blurPhone" v-model="PhoneText"
+            :class="noPhoneClick? ``: (blurPhoneSuc? `login_Suc` : `login_fail`)">
             <div class="picNum">
                 <input type="text" placeholder="图像码">
                 <img src="img/log/picNum.png" alt="">
@@ -19,39 +26,35 @@
                 <input type="text" placeholder="验证码">
                 <button>免费获取</button>
             </div>
-            <input type="password" placeholder="设置登陆密码">
+            <input type="password" placeholder="设置登陆密码" @blur="blurPwdP" v-model="PwdPText"
+            :class="noPwdPClick? ``: (blurPwdPSuc? `login_Suc` : `login_fail`)">
         </div>
         <div class="loginPhone_question">
             <div class="question1">
                 <span>为了安全起见，请立即设置你的密保问题</span>
-                <select name="" id="">
+                <select name="" id="qid1">
                     <option value="">请选择密保一问题</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
+                    <option value="">您父亲的姓名是？</option>
+                    <option value="">您母亲的姓名是？</option>
+                    <option value="">您小学好友的姓名是？</option>
                 </select>
-                <input type="text" placeholder="确认您的答案">
+                <input type="text" placeholder="确认您的答案" id="ans1">
             </div>
             <div class="question2">
-                <select name="" id="">
+                <select name="" id="qid2">
                     <option value="">请选择密保二问题</option>
-                    <option value="">1</option>
-                    <option value="">2</option>
-                    <option value="">3</option>
-                    <option value="">4</option>
-                    <option value="">5</option>
+                    <option value="">您父亲的年龄是？</option>
+                    <option value="">您母亲的年龄是？</option>
+                    <option value="">您小学好友的年龄是？</option>
                 </select>
-                <input type="text" placeholder="确认您的答案">
+                <input type="text" placeholder="确认您的答案" id="ans2">
                 <span>注册即表示您同意天巡的
                     <a href="javascript:;">服务条款</a>和
                     <a href="javascript:;">隐私政策</a>
                 </span>
             </div>
-            
         </div>
-        <button class="loginPhone_sub">注册</button>
+        <button class="loginPhone_sub" @click="logup">注册</button>
         <div class="loginPhone_chb">
             <input type="checkbox">接收目的地推荐及优惠邮件
         </div>
@@ -68,6 +71,140 @@
             loginPhone:{default:false},
             tologup:{type:Function},
             tologin:{type:Function}
+        },
+        data(){
+            return{
+                //0.提示消息
+                alermMsg1:"",
+                alermMsg2:"",
+                //1.是否点击了input
+                noEmailClick:true,
+                noPhoneClick:true,
+                noPwd1Click:true,
+                noPwd2Click:true,
+                noPwdPClick:true,
+                //2.离开input后是否显示成功
+                blurEmailSuc:false,
+                blurPhoneSuc:false,
+                blurPwd1Suc:false,
+                blurPwd2Suc:false,
+                blurPwdPSuc:false,
+                //3.input输入的文本
+                emailText:"",
+                PhoneText:"",
+                Pwd1Text:"",
+                Pwd2Text:"",
+                PwdPText:"",
+                //
+                
+            }
+        },
+        watch:{
+            Pwd1Text(){
+                this.blurPwd1();
+            },
+            Pwd2Text(){
+                this.blurPwd2();
+            }
+        },
+        methods:{
+            blurEmail(){
+                var emailReg=/^[A-Za-z0-9]\w*@[A-Za-z0-9]{2,5}[.](com|cn|net)$/;
+                if(!emailReg.test(this.emailText)){
+                    this.alermMsg1="电子邮箱有误";
+                    this.noEmailClick=false;
+                    this.blurEmailSuc=false;
+                    return;
+                }
+                this.noEmailClick=false;
+                this.blurEmailSuc=true;
+                this.alermMsg1="";
+            },
+            blurPwd1(){
+                //验证密码格式是否通过
+                var Pwd1Reg=/^\w{6,10}$/;
+                if(!Pwd1Reg.test(this.Pwd1Text)){
+                    this.alermMsg1="密码必须是6-10位数字、字母或下划线";
+                    this.noPwd1Click=false;
+                    this.blurPwd1Suc=false;
+                    return;
+                }
+                //密码格式通过情况下，修改密码1，根据密码2的情况所触发的事件
+                if(this.Pwd2Text!==this.Pwd1Text){
+                    if(this.Pwd2Text){
+                        this.alermMsg1="二次密码不一致";
+                        this.noPwd1Click=false;
+                        this.blurPwd1Suc=true;
+                        this.noPwd2Click=false;
+                        this.blurPwd2Suc=false;
+                    }else if(!this.Pwd2Text){
+                        this.alermMsg1="";
+                        this.noPwd1Click=false;
+                        this.blurPwd1Suc=true;
+                    }
+                }else{
+                    this.alermMsg1="";
+                    this.noPwd1Click=false;
+                    this.blurPwd1Suc=true;
+                    this.noPwd2Click=false;
+                    this.blurPwd2Suc=true;
+                }
+            },
+            blurPwd2(){
+                var Pwd1Reg=/^\w{6,10}$/;
+                if(Pwd1Reg.test(this.Pwd1Text)){
+                    this.noPwd2Click=false;
+                    this.blurPwd2Suc=true;
+                    this.alermMsg1="";
+                }else{
+                    this.noPwd2Click=true;
+                    this.blurPwd2Suc=false;
+                    this.alermMsg1="密码必须是6-10位数字、字母或下划线";
+                    return;
+                }
+                if(this.Pwd2Text!==this.Pwd1Text){
+                    this.alermMsg1="二次密码不一致";
+                    this.noPwd2Click=false;
+                    this.blurPwd2Suc=false;
+                    return;
+                }
+            },
+            blurPhone(){
+                var PhoneReg=/^[1][3-8]\d{9}$/;
+                if(!PhoneReg.test(this.PhoneText)){
+                    this.alermMsg2="手机号有误";
+                    this.noPhoneClick=false;
+                    this.blurPhoneSuc=false;
+                    return;
+                }
+                this.noPhoneClick=false;
+                this.blurPhoneSuc=true;
+                this.alermMsg2="";
+            },
+            blurPwdP(){
+                var PwdPReg=/^\w{6,10}$/;
+                if(!PwdPReg.test(this.PwdPText)){
+                    this.alermMsg2="密码必须是6-10位数字、字母或下划线";
+                    this.noPwdPClick=false;
+                    this.blurPwdPSuc=false;
+                    return;
+                }
+                this.noPwdPClick=false;
+                this.blurPwdPSuc=true;
+                this.alermMsg2="";
+            },
+            logup(){
+                var url="reguser";
+                var obj={
+                    phone:this.PhoneText,
+                    upwd:this.PwdPText
+                };
+                if(this.blurPhoneSuc==true && this.blurPwdPSuc==true){
+                    this.axios.get(url,{params:obj}).then((result)=>{
+                        console.log(result);
+                    })
+                }
+            }
         }
     }
 </script>
