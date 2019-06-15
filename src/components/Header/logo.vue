@@ -1,6 +1,10 @@
 <template>
   <a class="logo fl" href="javascript:;">
+<<<<<<< HEAD
     <img title="天巡网" :src="require('../../assets/logoB.png')">
+=======
+    <img title="天巡网" :src="require('@/assets/logoB.png')">
+>>>>>>> e47934cbc97f40d578aff3c9492d1340584678f4
   </a>
 </template>
 <script>

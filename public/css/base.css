@@ -52,6 +52,7 @@ ul {
 
 input,
 select,
+button,
 a {
   outline: none;
 }
@@ -534,6 +535,122 @@ img {
   padding-right: 25px
 }
 
+/* 边框
+   ========================================================================== */
+.bb {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+/* 字体大小(font-size)
+   ========================================================================== */
+.fs11 {
+  font-size: 11px;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.fs13 {
+  font-size: 13px;
+}
+
+.fs14 {
+  font-size: 14px;
+}
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs20 {
+  font-size: 20px;
+}
+
+.fs24 {
+  font-size: 24px;
+}
+
+.fs26 {
+  font-size: 26px;
+}
+
+/* 字体颜色 
+   ========================================================================== */
+/*color*/
+.blue {
+  color: #00b2d6 !important;
+}
+
+.c666 {
+  color: #666 !important;
+}
+
+.c999 {
+  color: #999 !important;
+}
+
+.c343 {
+  color: #34363d;
+}
+
+.price {
+  color: #FF5452;
+}
+
+.green {
+  color: #04a26e !important;
+}
+
+.c000 {
+  color: #000;
+}
+
+/*6.17*/
+.c090 {
+  color: #090;
+}
+
+.red {
+  color: #EB423F;
+}
+
+.default {
+  color: #34363d;
+}
+
+.bbp {
+  border-bottom: 1px dashed #ff6600;
+}
+
+.ls-color-grey-200 {
+  color: #B2AEBD !important;
+}
+
+.ls-color-grey-300,
+.c8a8a8a {
+  color: #817B8E !important;
+}
+
+.ls-color-grey-500 {
+  color: #817b8F !important;
+}
+
+.ls-color-grey-600 {
+  color: #696179 !important;
+}
+
+.ls-color-grey-700 {
+  color: #524c61 !important;
+}
+
+.ls-color-blue-500 {
+  color: #00b2d6;
+}
 
 /* 浮动
    ========================================================================== */
@@ -555,6 +672,7 @@ img {
 .clearfix::after {
   clear: both;
 }
+
 /* 清除两边浮动 */
 .cboth {
   clear: both;
@@ -564,6 +682,7 @@ img {
   margin: 0;
   padding: 0;
 }
+
 /* 定位
    ========================================================================== */
 .pa,

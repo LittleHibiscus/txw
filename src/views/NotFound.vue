@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import buttonLink from './buttonLink.vue'
+import buttonLink from '@/components/404/buttonLink'
 export default {
   components:{buttonLink}
 };
