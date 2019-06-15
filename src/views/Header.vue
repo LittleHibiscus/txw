@@ -1,0 +1,51 @@
+<template>
+  <header class="main-headerB">
+    <div class="wrap clearfix">
+      <!-- logo -->
+      <logo></logo>
+      <!-- 导航栏 -->
+      <navbar></navbar>
+      <div class="fr secondary">
+        <!-- 登陆注册 -->
+        <login></login>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+import navbar from "@/components/Header/navbar";
+import login from "@/components/Header/login";
+import logo from "@/components/Header/logo";
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+  components: {
+    navbar,
+    login,
+    logo,
+  }
+};
+</script>
+
+<style scoped>
+.loginlist {
+  left: 790.733px;
+  top: 57px;
+  z-index: 999;
+}
+
+header {
+  background-color: #00b2d6;
+  height: 60px;
+  font-size: 12px;
+  color: #fff;
+  box-shadow: 0 2px 3px #b6b1bd;
+}
+
+.secondary {
+  margin-top: 22px;
+}
+</style>
