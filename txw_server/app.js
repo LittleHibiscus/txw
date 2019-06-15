@@ -6,7 +6,7 @@ const mysql = require("mysql");
 var pool = mysql.createPool({
   host:"127.0.0.1",
   user:"root",
-  password:"",
+  password:"root",
   port:3306,
   database:"txw",
   connectionLimit:15
@@ -45,19 +45,19 @@ server.get("/reguser",(req,res)=>{
   var qid2   = req.query.qid2;
   var ans2   = req.query.ans2;  
   var tag   = req.query.tag;
-  var phone = req.query.phone;
+  var loginmode = req.query.phone;
   var upwd  = req.query.upwd;
   var truename = req.query.truename;
   var uname = req.query.uname;
   //2.1:sql
-  //  INSERT INTO tx_user(qid,ans,tag,phone,upwd,truename,uname)
+  //  INSERT INTO tx_user(qid,ans,tag,loginmode,upwd,truename,uname)
   //              VALUES (2,"问题1",1,"18516835889",MD5("123"),"zx","zhoux")
 
-  var sql =" INSERT INTO tx_user(ans2,qid2,ans1,qid1,tag,phone,upwd,truename,uname)";
+  var sql =" INSERT INTO tx_user(ans2,qid2,ans1,qid1,tag,loginmode,upwd,truename,uname)";
       sql+=" VALUES (?,?,?,?,?,?,md5(?),?,?)";
 
   //3.1:返回结果 
-  pool.query(sql,[ans2,qid2,ans1,qid1,tag,phone,upwd,truename,uname],(err,result)=>{
+  pool.query(sql,[ans2,qid2,ans1,qid1,tag,loginmode,upwd,truename,uname],(err,result)=>{
     if(err)throw err;
 
     if(result.affectedRows==0){
@@ -93,3 +93,5 @@ server.get("/login",(req,res)=>{
     }
   });
 });
+
+//3:查询问题列表
