@@ -76,15 +76,10 @@
     border:1px solid #00b2d6
 }
 /*当输入成功*/
-.imgSuc1{
-    position: absolute;
-    left:93%;
-    top:19px;
-}
-.imgSuc2{
-    position: absolute;
-    left:93%;
-    top:73px;
+.login_Suc{
+    background-image: url("../../img/log/ok.png");
+    background-repeat: no-repeat;
+    background-position: 290px 10px;;
 }
 /*当输入失败*/
 .login_fail{
