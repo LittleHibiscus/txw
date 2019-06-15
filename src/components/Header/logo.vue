@@ -1,6 +1,6 @@
 <template>
   <a class="logo fl" href="javascript:;">
-    <img title="天巡网" :src="require('../../components/assets/logoB.png')">
+    <img title="天巡网" :src="require('../../assets/logoB.png')">
   </a>
 </template>
 <script>
