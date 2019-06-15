@@ -2,7 +2,7 @@
 <div class="mail" id="main">
             <div class="tabA mgt10">
                 <a class="active">常用乘机人</a>
-                <a href="contact.php">常用联系人</a>
+                <a href="contact.php" >常用联系人</a>
             </div>
 
             <div class="cboth"></div>
