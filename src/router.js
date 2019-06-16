@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloContainer from "./components/HelloWorld.vue"
 
 import log from "./views/log.vue";
 import seat from "./views/seat.vue";
@@ -13,6 +12,7 @@ import order03 from "./components/tx/order03.vue"
 import order04 from "./components/tx/order04.vue"
 import order05 from "./components/tx/order05.vue"
 import order06 from "./components/tx/order06.vue"
+import bind_weibo from "./components/tx/bind_weibo.vue"
 
 
 
@@ -23,7 +23,7 @@ export default new Router({
     { path: "/log", component: log },
     { path: "/seat", component: seat },
     { path: "*", component: NotFound },
-    {path:'/',component:HelloContainer},
+    /*子路由 */
     {
       path:'/order',
       name:'order',
@@ -52,6 +52,10 @@ export default new Router({
          {
            path:'order06',
            component:order06
+         },
+         {
+           path:'bind_weibo',
+           component:bind_weibo
          },
       ]
       

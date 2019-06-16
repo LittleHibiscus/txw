@@ -55,6 +55,7 @@
             blurUname(){
                 if(!this.loginUname){
                     this.alermMsg="请输入用户名";
+                    this.UnameSuc=false;
                     this.blurUnameSuc=false;
                     this.noUnameClick=false;
                     return;
@@ -67,6 +68,7 @@
                 var pwdReg=/^\w{6,10}$/
                 if(!pwdReg.test(this.loginPwd)){
                     this.alermMsg="密码必须是6-10位数字、字母或下划线";
+                    this.PwdSuc=false;
                     this.blurPwdSuc=false;
                     this.noPwdClick=false;
                     return;

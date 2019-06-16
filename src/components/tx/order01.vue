@@ -7,7 +7,7 @@
     </div>
     <div class="cboth"></div>
     <div class="mgb10 lh26" style=" margin:15px 0 0 15px;">
-        暂时只提供<b>直接预订</b>且以201开头的订单查询。<a href="#" id="getSuppliers">点击查看支持的供应商</a>。
+        暂时只提供<b>直接预订</b>且以201开头的订单查询。<span id="getSuppliers" @click="changesupplier">点击查看支持的供应商</span>。<supplier :show-dialog="showDialog" :msg="msg" :type="type" @closesupplier="closesupplier"></supplier>
             非201订单请<a href="#" target="view_window">点击这里</a>获取帮助。
     </div>
     <!--非会员开始-->
@@ -142,19 +142,30 @@
 <script>
 import '../../../public/member1.css'
 import sidentify from "./code.vue"
+import supplier from "./alert.vue"
 
 export default {
     data(){
         return {
             dis:true,
             identifyCode:'1mj4',
-            identifyCodes:"1234567890wiserui"
+            identifyCodes:"1234567890wiserui",
+            showDialog:false,
+            msg:"支持的供应商:携程旅行，去哪儿网，途牛，中国南方航空官网",
+            type:1
         }
     },
     components:{
-        sidentify
+        sidentify,
+        supplier
     },
     methods:{
+       closesupplier(){
+           this.showDialog=false;
+       },
+       changesupplier(){
+           this.showDialog=!this.showDialog;
+       },
        change1(){
            this.dis=true
        },

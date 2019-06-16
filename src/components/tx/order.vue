@@ -15,9 +15,6 @@
         </ul>
     </div> 
     <div>
-        <!-- <router-link to="order/order03">order03</router-link>
-        <router-link to="order/order04">order04</router-link>
-        <router-link to="order/order05">order05</router-link> -->
         <router-view></router-view>
     </div>   
     <div class="cboth"></div>  
