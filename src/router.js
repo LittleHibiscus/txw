@@ -15,6 +15,7 @@ import order05 from "./components/tx/order05.vue"
 import order06 from "./components/tx/order06.vue"
 
 
+
 Vue.use(Router)
 export default new Router({
   routes: [

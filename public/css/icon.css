@@ -1,4 +1,4 @@
-/*
+
 @charset "UTF-8";
 
 .icon_flight {
@@ -54,9 +54,7 @@
   vertical-align: middle;
   margin-left: -9px;
 }
-<<<<<<< HEAD
-*/
-=======
+
 
 .origin-icon {
   background-image: url('../../src/assets/searchbox-icon.png');
@@ -157,4 +155,4 @@
   vertical-align: middle;
   margin-right: 5px;
 }
->>>>>>> e47934cbc97f40d578aff3c9492d1340584678f4
+

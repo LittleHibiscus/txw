@@ -71,14 +71,14 @@ server.get("/reguser",(req,res)=>{
 //2：接收用户登录请求
 server.get("/login",(req,res)=>{
   //1:接收脚手架参数 uname upwd
-  var uname = req.query.uname;
-  var upwd = req.query.upwd;
+  var uname = req.query.loginUname;
+  var upwd = req.query.loginPwd;
   //2:sql
   //  SELECT uid FROM tx_user WHERE uname = ? AND upwd = md5(?)
 
 
   var sql =" SELECT uid FROM tx_user"; 
-      sql+=" WHERE uname = ?";
+      sql+=" WHERE phone = ?";
       sql+=" AND upwd = md5(?)";
   //3:返回结果 
   pool.query(sql,[uname,upwd],(err,result)=>{
@@ -86,8 +86,7 @@ server.get("/login",(req,res)=>{
     if(result.length==0){
       res.send({code:-1,msg:"用户名或密码有误"});
     }else{
-
-      req.session.uid = result[0].uid
+      req.session.uid = result[0].id
       console.log(req.session); 
       res.send({code:1,msg:"登录成功"});
     }

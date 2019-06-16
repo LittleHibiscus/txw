@@ -29,25 +29,28 @@
             <input type="password" placeholder="设置登陆密码" @blur="blurPwdP" v-model="PwdPText"
             :class="noPwdPClick? ``: (blurPwdPSuc? `login_Suc` : `login_fail`)">
         </div>
+        <!--密保-->
         <div class="loginPhone_question">
             <div class="question1">
                 <span>为了安全起见，请立即设置你的密保问题</span>
-                <select name="" id="qid1">
-                    <option value="">请选择密保一问题</option>
-                    <option value="">您父亲的姓名是？</option>
-                    <option value="">您母亲的姓名是？</option>
-                    <option value="">您小学好友的姓名是？</option>
+                <select name="question1" v-model="que1" @change="que1Change">
+                    <option value="0">请选择密保一问题</option>
+                    <option value="1">您父亲的姓名是？</option>
+                    <option value="2">您母亲的姓名是？</option>
+                    <option value="3">您小学好友的姓名是？</option>
                 </select>
-                <input type="text" placeholder="确认您的答案" id="ans1">
+                <input type="text" placeholder="确认您的答案" v-model="ans1text" @blur="blurans1"
+                :class="noans1Click? ``: (blurans1Suc? `login_Suc` : `login_fail`)">
             </div>
             <div class="question2">
-                <select name="" id="qid2">
-                    <option value="">请选择密保二问题</option>
-                    <option value="">您父亲的年龄是？</option>
-                    <option value="">您母亲的年龄是？</option>
-                    <option value="">您小学好友的年龄是？</option>
+                <select name="question2" v-model="que2" @change="que2Change">
+                    <option value="0">请选择密保二问题</option>
+                    <option value="1">您父亲的年龄是？</option>
+                    <option value="2">您母亲的年龄是？</option>
+                    <option value="3">您小学好友的年龄是？</option>
                 </select>
-                <input type="text" placeholder="确认您的答案" id="ans2">
+                <input type="text" placeholder="确认您的答案" v-model="ans2text" @blur="blurans2"
+                :class="noans2Click? ``: (blurans2Suc? `login_Suc` : `login_fail`)">
                 <span>注册即表示您同意天巡的
                     <a href="javascript:;">服务条款</a>和
                     <a href="javascript:;">隐私政策</a>
@@ -58,6 +61,7 @@
         <div class="loginPhone_chb">
             <input type="checkbox">接收目的地推荐及优惠邮件
         </div>
+        <!--直接登陆-->
         <p class="loginPhone_login">已有账号?<a href="javascript:;" @click="tologin">直接登陆</a></p>
     </div>
 
@@ -70,7 +74,8 @@
             loginEmail:{default:false},
             loginPhone:{default:false},
             tologup:{type:Function},
-            tologin:{type:Function}
+            tologin:{type:Function},
+            
         },
         data(){
             return{
@@ -83,20 +88,27 @@
                 noPwd1Click:true,
                 noPwd2Click:true,
                 noPwdPClick:true,
+                noans1Click:true,
+                noans2Click:true,
                 //2.离开input后是否显示成功
                 blurEmailSuc:false,
                 blurPhoneSuc:false,
                 blurPwd1Suc:false,
                 blurPwd2Suc:false,
                 blurPwdPSuc:false,
+                blurans1Suc:false,
+                blurans2Suc:false,
                 //3.input输入的文本
                 emailText:"",
                 PhoneText:"",
                 Pwd1Text:"",
                 Pwd2Text:"",
                 PwdPText:"",
+                ans1text:"",
+                ans2text:"",
                 //
-                
+                que1:"0",
+                que2:"0",
             }
         },
         watch:{
@@ -105,11 +117,15 @@
             },
             Pwd2Text(){
                 this.blurPwd2();
+            },
+            PwdPText(){
+                this.blurPwdP();
             }
         },
         methods:{
+            /*************邮箱注册-邮箱验证**************/
             blurEmail(){
-                var emailReg=/^[A-Za-z0-9]\w*@[A-Za-z0-9]{2,5}[.](com|cn|net)$/;
+                var emailReg=/^[A-Za-z0-9]\w{5,17}@[A-Za-z0-9]{2,5}[.](com|cn|net)$/;
                 if(!emailReg.test(this.emailText)){
                     this.alermMsg1="电子邮箱有误";
                     this.noEmailClick=false;
@@ -120,6 +136,8 @@
                 this.blurEmailSuc=true;
                 this.alermMsg1="";
             },
+            /*************邮箱注册-登陆密码验证**************/
+            /*************一次密码**************/
             blurPwd1(){
                 //验证密码格式是否通过
                 var Pwd1Reg=/^\w{6,10}$/;
@@ -150,6 +168,7 @@
                     this.blurPwd2Suc=true;
                 }
             },
+            /*************二次密码**************/
             blurPwd2(){
                 var Pwd1Reg=/^\w{6,10}$/;
                 if(Pwd1Reg.test(this.Pwd1Text)){
@@ -169,6 +188,7 @@
                     return;
                 }
             },
+            /*************手机注册-手机号验证**************/
             blurPhone(){
                 var PhoneReg=/^[1][3-8]\d{9}$/;
                 if(!PhoneReg.test(this.PhoneText)){
@@ -181,6 +201,7 @@
                 this.blurPhoneSuc=true;
                 this.alermMsg2="";
             },
+            /*************手机注册-登陆验证**************/
             blurPwdP(){
                 var PwdPReg=/^\w{6,10}$/;
                 if(!PwdPReg.test(this.PwdPText)){
@@ -193,18 +214,68 @@
                 this.blurPwdPSuc=true;
                 this.alermMsg2="";
             },
+            /*************密保**************/
+            que1Change(){
+                this.ans1text="";
+                this.noans1Click=true;
+            },
+            que2Change(){
+                this.ans2text="";
+                this.noans2Click=true;
+            },
+            blurans1(){
+                if(!this.ans1text){
+                    this.alermMsg1="请输入答案一";
+                    this.alermMsg2="请输入答案一";
+                    this.noans1Click=false;
+                    this.blurans1Suc=false;
+                    return;
+                }
+                this.noans1Click=false;
+                this.blurans1Suc=true;
+                this.alermMsg1="";
+                //console.log(this.que1)
+            },
+            blurans2(){
+                if(!this.ans2text){
+                    this.alermMsg1="请输入答案二";
+                    this.alermMsg2="请输入答案二";
+                    this.noans2Click=false;
+                    this.blurans2Suc=false;
+                    return;
+                }
+                this.noans2Click=false;
+                this.blurans2Suc=true;
+                this.alermMsg2="";
+                //console.log(this.que2);
+            },
+            /*************提交注册**************/
             logup(){
                 var url="reguser";
                 var obj={
-                    phone:this.PhoneText,
-                    upwd:this.PwdPText
+                    /*************手机注册--tag:1**************/
+                    /*************邮箱注册--tag:2**************/
+                    tag:this.blurPhoneSuc==true? 1 : 2,
+                    phone:this.blurPhoneSuc==true ? this.PhoneText : this.emailText,
+                    upwd:this.blurPhoneSuc==true ? this.PwdPText : this.Pwd1Text,
+                    qid1:this.que1,
+                    qid2:this.que2,
+                    ans1:this.ans1text,
+                    ans2:this.ans2text
                 };
-                if(this.blurPhoneSuc==true && this.blurPwdPSuc==true){
+                if((this.blurPhoneSuc==true && this.blurPwdPSuc==true
+                && this.blurans1Suc==true && this.blurans2Suc==true)
+                ||(this.blurEmailSuc==true && this.blurPwd1Suc==true
+                    && this.blurPwd2Suc==true && this.blurans1Suc==true 
+                    && this.blurans2Suc==true)){
                     this.axios.get(url,{params:obj}).then((result)=>{
-                        console.log(result);
+                        //console.log(result);
+                        alert("注册成功");
+                        this.$router.push("/log")
                     })
                 }
-            }
+            },
+            
         }
     }
 </script>

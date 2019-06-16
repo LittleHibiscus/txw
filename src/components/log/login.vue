@@ -76,26 +76,24 @@
                 this.alermMsg="";
             },
             login(){
+                var url="login"
+                var obj={
+                    loginUname:this.loginUname,
+                    loginPwd:this.loginPwd
+                }
                 if(this.blurUnameSuc==true && this.blurPwdSuc==true){
-                    alert("登陆成功！")
-                }
-                if(!this.loginUname){
-                    this.alermMsg="请输入用户名";
-                    this.blurUnameSuc=false;
-                    this.noUnameClick=false;
-                    return;
-                }
-                if(!this.loginPwd){
-                    this.alermMsg="请输入密码";
-                    this.blurPwdSuc=false;
-                    this.noPwdClick=false;
-                    return;
-                }
-                var pwdReg=/^\w{6,10}$/
-                if(!pwdReg.test(this.loginPwd)){
-                    this.alermMsg="密码必须是6-10位数字、字母或下划线";
-                    this.blurPwdSuc=false;
-                    this.noPwdClick=false;
+                    this.axios.get(url,{params:obj}).then((result)=>
+                        {
+                            console.log(result);
+                            if(result.data.code==1){
+                                alert(result.data.msg);
+                                this.$router.push("/");
+                            }else{
+                                alert(result.data.msg);
+                                this.$router.push("/log");
+                            }
+                        }
+                    )
                 }
             },
         }
