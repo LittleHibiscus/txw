@@ -1,0 +1,198 @@
+<template>
+<div class="mail" id="main">
+    <div class="tabA mgt10">
+        <a class="active"   @click="change1" >直接预订</a>
+        <a href="http://127.0.0.1:8080/#/order/order06">跳转记录</a>
+        <div class="cursor mgr10 fr " style="font-size:12px;margin-top:21px;" @click="change2" >非会员订单查询</div>
+    </div>
+    <div class="cboth"></div>
+    <div class="mgb10 lh26" style=" margin:15px 0 0 15px;">
+        暂时只提供<b>直接预订</b>且以201开头的订单查询。<span id="getSuppliers" @click="changesupplier">点击查看支持的供应商</span>。<supplier :show-dialog="showDialog" :msg="msg" :type="type" @closesupplier="closesupplier"></supplier>
+            非201订单请<a href="#" target="view_window">点击这里</a>获取帮助。
+    </div>
+    <!--非会员开始-->
+    <!-- order query -->
+    <div class="flight_list mgt50" id="queryDiv" v-show="dis==false">
+        <div class="title_num">
+            <span class="fs14 blue fl mgl20">非会员订单查询</span>
+            <a class="fr mgr20" id="switch"><span class="arrow-down-douber"></span></a>
+        </div>
+        <div class="main_num" style="background-color: #fafafa;" id="queryBody">
+            <form id="queryForm" name="queryForm" method="post" action="/member/flight-order.php">
+                <input type="hidden" name="action" value="query">
+
+                <div class="loginbox" style="width:60%">
+                    <li class="xgmd" style="background-color:transparent; border: none; box-shadow: none; margin-left: 0; margin-top: 0;">
+                        <div class="mgb20 mgl40" id="query-type">
+                            <label><input name="queryType" autocomplete="off" value="mobile" type="radio" checked="">手机号查询</label>
+                            <label class="mgl10"><input name="queryType" autocomplete="off" value="order" type="radio">订单号查询</label>
+                        </div>
+                        <div id="query-box-mobile" class="">
+                            <dl>
+                                <dt>手机号码</dt>
+                                <dd>
+                                    <div class="item_box">
+                                        <input autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile1" id="mobile" class="item_fo" type="text" value="">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>图形码</dt>
+                                <dd>
+                                    <div class="item_box item_fo_x" style="width:132px;">
+                                        <input class="item_fo" maxlength="6" autocomplete="off" id="verify_code" type="text">
+                                        <div @click="refreshCode">
+                                            <sidentify :identifyCode="identifyCode"></sidentify>
+                                        </div>
+                                    </div>
+                                    <div class="fl">
+                                        <span class="cur mgl5"></span>
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>验证码</dt>
+                                <dd>
+                                <div class="item_box item_fo_x">
+                                    <input maxlength="6" autocomplete="off" tip="请输入验证码" errormsg="请输入6位数字的验证码" datatype="/^[0-9]{6}$/" name="authCode" class="item_fo" type="text">
+                                </div>
+                                <div class="but_dxyzm mgl8" type="common" target="mobile" verifyid="verify_code">
+                                    点击免费获取
+                                </div>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <div id="query-box-order" class="none">
+                            <dl>
+                                <dt>订单号</dt>
+                                <dd>
+                                    <div class="item_box">
+                                        <input autocomplete="off" tip="请输入订单号" datatype="/^[0-9]{21}$/" name="orderCode" class="item_fo" type="text" maxlength="21" value="">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>手机号码</dt>
+                                <dd>
+                                    <div class="item_box">
+                                        <input autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile2" class="item_fo" type="text" value="">
+                                    </div>
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>图形码</dt>
+                                <dd>
+                                    <div class="item_box item_fo_x" style="width:132px;">
+                                        <input class="item_fo" maxlength="6" autocomplete="off" id="captcha" name="captcha" type="text" datatype="/^[a-z]{6}$/i" tip="请输入图形码" errormsg="请输入6位的图形码">
+                                    </div>
+                                <div class="fl">
+                                    <span class="cur mgl5"><img src="captcha.php?bg=250&amp;r=1560174509" class="captcha" target="captcha" title="点击刷新" align="absmiddle"></span>
+                                </div>
+                                </dd>
+                            </dl>
+                        </div>
+
+                        <dl>
+                            <dt>&nbsp;</dt>
+                            <dd class="mgt5">
+                                <span id="querySubmitBtn" class="baocun buttonA fl" style="width: 170px; font-size: 14px;">查询订单</span>
+                            </dd>
+                        </dl>
+                    </li>
+                </div>
+                </form>
+            </div>
+        </div>
+        <!-- end -->
+        <!-- 直接预订页面开始-->
+        <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="dis==true">
+            <div style="margin:20px; height:30px;width:850px">
+                <span class="fl pt3">订单开始时间：</span>
+                <div class="dateDiv">
+                        <input type="text" name="startDate" id="startDate" value="2019-05-10" readonly="readonly">
+                        <span class="dateImg"></span>
+                </div>
+                <span class="fl pt3 mgl30">订单结束时间：</span>
+                <div class="dateDiv">
+                        <input type="text" name="endDate" id="endDate" value="2019-06-10" readonly="readonly">
+                        <span class="dateImg"></span>
+                </div>
+                <span class="fl pt3 mgl30">状态：</span>
+                <select name="status" id="status" class="searchDiv fl">
+                    <option value="" selected=""></option>
+                    <option value="CONFIRM">未付款</option>
+                    <option value="WAITING">等待座位确认</option>
+                    <option value="CANCEL">已取消</option>
+                    <option value="FAIL">下单失败</option>
+                    <option value="PREPAYMENT">已成功提交付款</option>
+                    <option value="PAYMENT">已付款</option>
+                    <option value="FINISHED">已出票</option>
+                    <option value="APPLYCHANGE">改签申请</option>
+                    <option value="CHANGE">改签完成</option>
+                    <option value="APPLYREFUND">退票申请</option>
+                    <option value="REFUND">退票完成</option>
+                </select>
+                <div style="margin-left:15px;" class="fl delete cursor" onclick="$('#filterForm').submit()" id="btnSearch">确定</div>
+            </div>
+        </form>
+        <div id="flightList"></div>
+</div>
+</template>
+<script>
+import '../../../public/member1.css'
+import sidentify from "./code.vue"
+import supplier from "./alert.vue"
+
+export default {
+    data(){
+        return {
+            dis:true,
+            identifyCode:'1mj4',
+            identifyCodes:"1234567890wiserui",
+            showDialog:false,
+            msg:"支持的供应商:携程旅行，去哪儿网，途牛，中国南方航空官网",
+            type:1
+        }
+    },
+    components:{
+        sidentify,
+        supplier
+    },
+    methods:{
+       closesupplier(){
+           this.showDialog=false;
+       },
+       changesupplier(){
+           this.showDialog=!this.showDialog;
+       },
+       change1(){
+           this.dis=true
+       },
+       change2(){
+           this.dis=false
+       },
+       randomNum(min,max){
+           return Math.floor(Math.random()*(max-min)+min);
+       },
+       refreshCode(){
+           this.identifyCode="";
+           this.markeCode(this.identifyCodes,4);
+           console.log('当前验证码==',this.identifyCode);
+       },
+       markeCode(o,l){
+           for(let i=0;i<l;i++){
+               this.identifyCode+=this.identifyCodes[
+                   this.randomNum(0,this.identifyCodes.length)
+               ];
+           }
+       },
+    }
+
+}
+</script>
+<style scoped>
+
+  
+  
+</style>
