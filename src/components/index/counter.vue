@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       // counter 的 值
-      key: 1,
+      key: this.min,
       // + 点击样式
       canClickAdd: true,
       // - 点击样式
@@ -56,18 +56,15 @@ export default {
   props: {
     // 选择器描述文本
     title: {
-      default: "",
-      type: String
+      default: ""
     },
     // 允许最小值
     min: {
-      default: 0,
-      type: Number
+      default: 0
     },
     // 允许最大值
     max: {
-      default: 9,
-      type: Number
+      default: 9
     }
   }
 };

@@ -3,7 +3,7 @@
     <div class="dropdown dropdownB">
       <span class="fl" @click="showDropdownList(false)">{{dropdownListItem}}</span>
       <i class="fr"></i>
-      <ul :class="{'dropdownlist':true,'dropdownlist-hover':true,'none':isShowDropdownList}">
+      <ul :class="{'dropdownlist':true,'dropdownlist-hover':true,'none':!!!isShowDropdownList}">
         <li
           v-for="(t,i) of dropdownList"
           :key="i"

@@ -6,7 +6,9 @@
   >
     <!-- left: 426.217px; top: 96.1334px; z-index: 999; -->
     <option-passengers-box-list></option-passengers-box-list>
-    <counter v-for="(t,i) of passagerAgeList" :key="i" :title="t"></counter>
+    <counter title="(12岁以上)" min="1" max="8"></counter>
+    <counter title="(2到12岁)" min="0" max="8"></counter>
+    <counter title="(2岁以下)" min="0" max="8"></counter>
   </div>
 </template>
 
@@ -18,8 +20,8 @@ export default {
     return {
       // 数据库获取机舱名字
       dropdownList: ["经济舱", "高端经济舱", "商务舱", "头等舱"],
-      // 乘机人年龄
-      passagerAgeList: ["(12岁以上)", "(2到12岁)", "(2岁以下)"],
+      // // 乘机人年龄
+      // passagerAgeList: ["(12岁以上)", "(2到12岁)", "(2岁以下)"],
       isShowDropdownList: false,
       dropdownListItem: "经济舱",
       classOn: "经济舱"

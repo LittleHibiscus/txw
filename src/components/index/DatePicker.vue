@@ -291,15 +291,6 @@ export default {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
-.zss-date-picker > .zss-date-input {
-  /* width: 100%;
-  height: 100%;
-  border: 0;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: #414141; */
-  /* padding: 0 20px; */
-}
 
 .zss-date-picker {
   color: #000;
