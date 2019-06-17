@@ -296,11 +296,9 @@ export default {};
   font-size: 20px;
 }
 .l {
-  float: left;
   display: inline;
 }
 .r {
-  float: right;
   display: inline;
 }
 .home-con-text .box {
@@ -551,7 +549,6 @@ export default {};
   display: block;
   float: left;
   padding: 13px 20px 8px;
-  vertical-align: middle;
   width: 109px;
 }
 .home_side .template .tempLeft {
