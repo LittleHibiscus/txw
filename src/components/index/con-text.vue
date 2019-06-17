@@ -239,9 +239,9 @@
         <a class="tempLeft bb" href="javascript:;" target="_blank" rel="nofollow">
           <i class="ico_cpcx"></i>网上选座
         </a>
-        <a class="tempRight bb" href="javascript:;" target="_blank" rel="nofollow">
+        <router-link to="order/order01" class="tempRight bb" rel="nofollow">
           <i class="ico_jpyz"></i>出票状态
-        </a>
+        </router-link>
         <a
           class="tempLeft"
           style="padding-bottom:10px;"
@@ -253,9 +253,9 @@
           <em>机票验真</em>
           <span>(国内)</span>
         </a>
-        <a class="tempRight" href="javascript:;" target="_blank" rel="nofollow">
+        <router-link to="order/order01"  rel="nofollow">
           <i class="ico_tgq"></i>退票改签
-        </a>
+        </router-link>
       </div>
       <div class="cboth"></div>
 

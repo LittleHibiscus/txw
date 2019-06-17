@@ -14,7 +14,10 @@
  Date: 10/06/2019 11:44:43
 */
 
-SET NAMES utf8mb4;
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS txw;
+CREATE DATABASE txw CHARSET=UTF8;
+USE txw;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -106,15 +109,25 @@ CREATE TABLE `tx_target`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `tx_user`;
 CREATE TABLE `tx_user`  (
-  `ans` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密保答案',
-  `qid` tinyint(4) NULL DEFAULT NULL COMMENT '密保id',
+  `ans1` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密保答案1',
+  `qid1` tinyint(4) NULL DEFAULT NULL COMMENT '密保id1',
+  `ans2` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密保答案2',
+  `qid2` tinyint(4) NULL DEFAULT NULL COMMENT '密保id2',
   `tag` tinyint(4) NULL DEFAULT NULL COMMENT '标示',
-  `phone` varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '手机号',
+<<<<<<< HEAD
+  `phone` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '手机号',
+=======
+  `loginmode` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '登录方式',
+>>>>>>> 07c51652527a50a29fc53b94a556e3f01cbdd76a
   `upwd` char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
-  `rename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
-  `uname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `truename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
+  `uname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户账号',
   `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
   PRIMARY KEY (`uid`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '登陆用户基本信息' ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+/*
+INSERT INTO tx_user(ans1,qid1,ans2,qid2,tag,phone,upwd,truename,uname) VALUES ("问题1",1,"问题2",2,1,"18516835889",MD5("123"),"zx1","zhoux1")
+*/

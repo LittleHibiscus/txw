@@ -17,12 +17,10 @@
         <div class="login_input">
             <!--登陆用户名-->
             <input type="text" placeholder="用户名/邮箱/手机号" v-model="loginUname" 
-            @blur="blurUname" :class="blurUnameSuc? `` : `login_fail`">
-            <img class="imgSuc1" src="img/log/ok.png" alt="" v-show="UnameSuc">
+            @blur="blurUname" :class="noUnameClick? ``: (blurUnameSuc? `login_Suc` : `login_fail`)">
             <!--登陆密码-->
             <input type="password" placeholder="登陆密码" v-model="loginPwd" 
-            @blur="blurPwd" :class="blurPwdSuc? `` : `login_fail`">
-            <img class="imgSuc2" src="img/log/ok.png" alt="" v-show="PwdSuc">
+            @blur="blurPwd"  :class="noPwdClick? ``: (blurPwdSuc? `login_Suc` : `login_fail`)">
         </div>
         <button class="login_sub" @click="login">登陆</button>
         <div class="login_chb">
@@ -46,10 +44,11 @@
                 alermMsg:"",
                 loginUname:"",
                 loginPwd:"",
-                UnameSuc:false,
-                PwdSuc:false,
-                blurUnameSuc:true,
-                blurPwdSuc:true
+                noUnameClick:true,
+                noPwdClick:true,
+                blurUnameSuc:false,
+                blurPwdSuc:false,
+                
             }
         },
         methods:{
@@ -58,9 +57,10 @@
                     this.alermMsg="请输入用户名";
                     this.UnameSuc=false;
                     this.blurUnameSuc=false;
+                    this.noUnameClick=false;
                     return;
                 }
-                this.UnameSuc=true;
+                this.noUnameClick=false;
                 this.blurUnameSuc=true;
                 this.alermMsg="";
             },
@@ -70,30 +70,32 @@
                     this.alermMsg="密码必须是6-10位数字、字母或下划线";
                     this.PwdSuc=false;
                     this.blurPwdSuc=false;
+                    this.noPwdClick=false;
                     return;
                 }
-                this.PwdSuc=true;
+                this.noPwdClick=false;
                 this.blurPwdSuc=true;
                 this.alermMsg="";
             },
             login(){
-                if(this.UnameSuc==true && this.PwdSuc==true){
-                    alert("登陆成功！")
+                var url="login"
+                var obj={
+                    loginUname:this.loginUname,
+                    loginPwd:this.loginPwd
                 }
-                if(!this.loginUname){
-                    this.alermMsg="请输入用户名";
-                    this.blurUnameSuc=false;
-                    return;
-                }
-                if(!this.loginPwd){
-                    this.alermMsg="请输入密码";
-                    this.blurPwdSuc=false;
-                    return;
-                }
-                var pwdReg=/^\w{6,10}$/
-                if(!pwdReg.test(this.loginPwd)){
-                    this.alermMsg="密码必须是6-10位数字、字母或下划线";
-                    this.blurPwdSuc=false;
+                if(this.blurUnameSuc==true && this.blurPwdSuc==true){
+                    this.axios.get(url,{params:obj}).then((result)=>
+                        {
+                            console.log(result);
+                            if(result.data.code==1){
+                                alert(result.data.msg);
+                                this.$router.push("/");
+                            }else{
+                                alert(result.data.msg);
+                                this.$router.push("/log");
+                            }
+                        }
+                    )
                 }
             },
         }
