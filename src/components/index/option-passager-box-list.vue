@@ -3,7 +3,7 @@
     <div class="dropdown dropdownB">
       <span class="fl" @click="showDropdownList(false)">{{dropdownListItem}}</span>
       <i class="fr"></i>
-      <ul :class="{'dropdownlist':true,'dropdownlist-hover':true,'none':!!!isShowDropdownList}">
+      <ul :class="{'dropdownlist':true,'dropdownlist-hover':true,'none':isHiddenDropdownList}">
         <li
           v-for="(t,i) of dropdownList"
           :key="i"
@@ -29,14 +29,14 @@ export default {
       // 数据库获取机舱名字
       dropdownList: ["经济舱", "高端经济舱", "商务舱", "头等舱"],
 
-      isShowDropdownList: false,
+      isHiddenDropdownList: true,
       dropdownListItem: "经济舱",
       classOn: "经济舱"
     };
   },
   methods: {
     showDropdownList(status, title) {
-      this.isShowDropdownList = status;
+      this.isHiddenDropdownList = status;
       this.dropdownListItem = title;
       this.classOn = title;
     }
