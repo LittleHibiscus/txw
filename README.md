@@ -23,7 +23,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run serve # 默认 开发服务器地址为 http://localhost:8080
 ```
 
 ### Compiles and minifies for production

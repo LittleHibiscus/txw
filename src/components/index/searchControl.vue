@@ -19,14 +19,15 @@
           <i class="exchange-icon"></i>
         </a>
         <div class="destination fr">
-          <label class="place-label" :value="destinationCity">目的城市</label>
+          <label class="place-label">目的城市</label>
           <span class="anywhere" v-show="showAnywhere">所有地点</span>
           <input
             type="text"
             id="dstCity"
             class="tt-input js-city default"
+            v-model="destinationCity"
             @focus="showAnywhere=false"
-            @blur="showAnywhere=true"
+            @blur="showAnywhere=!destinationCity"
             autocomplete="off"
           >
           <input type="hidden" id="dstCityCountry" value autocomplete="off">
@@ -39,57 +40,20 @@
         <div class="search-dates">
           <div class="depart fl">
             <label class="place-label">去程时间</label>
-            <!-- <input
-              value="2019-06-16"
-              data-preval="2019-06-16"
-              autocomplete="off"
-              readonly="readonly"
-            >-->
-            <date-picker :value="date"></date-picker>
+            <date-picker v-model="date1"></date-picker>
             <i class="dates-icon"></i>
           </div>
           <div class="return fr">
             <label class="place-label">回程时间</label>
-            <!-- <input
-              type="text"
-              id="returnDate"
-              value="2019-06-16"
-              data-preval="2019-06-16"
-              autocomplete="off"
-              readonly="readonly"
-            >-->
-            <date-picker :value="date"></date-picker>
+            <date-picker v-model="date2"></date-picker>
             <i class="dates-icon"></i>
           </div>
         </div>
-        <div
-          class="search-pax-cabin-class fr relative none"
-          id="option-passengers-dom"
-          style="display: none;"
-        >
-          <label class="place-label">舱位</label>
-          <div class="cabin-class-travellers-trigger" id="option-cabin-input">
-            <span id="cabin-class-dom">经济舱</span>
-            <i class="down-arrow fr mgt6"></i>
-            <input
-              type="hidden"
-              id="search-option-class-domestic"
-              value="Economy"
-              autocomplete="off"
-            >
-            <ul class="dropdownlist dropdownlist-cabin">
-              <li data-val="Economy">经济舱</li>
-              <li data-val="First">头等/商务舱</li>
-            </ul>
-          </div>
-        </div>
+        <!-- 仓位人数选择 -->
         <div class="search-pax-cabin-class fr relative" id="option-passengers-intl">
           <label class="place-label">人数 &amp; 舱位</label>
-          <div
-            class="cabin-class-travellers-trigger"
-            rel="option-passengers-box"
-            id="option-passenger-input"
-          >
+
+          <div class="cabin-class-travellers-trigger" @click="optionPassagerBoxShow()">
             <span id="passengers">
               <i class="adult-icon"></i>
               <span class="mgr5">
@@ -98,6 +62,13 @@
             </span>
             <span id="cabin-class-intl">经济舱</span>
             <i class="down-arrow fr mgt6"></i>
+            <div
+              @mouseleave="optionPassagerBoxHidden()"
+              @mouseenter="optionPassagerBoxShow()"
+              :class="{'none':!isOptionPassagerBoxShow}"
+            >
+              <option-passager-box></option-passager-box>
+            </div>
           </div>
         </div>
       </div>
@@ -115,120 +86,47 @@
       <input type="hidden" id="depCityDefault" value="中国(CN)">
       <input type="hidden" id="depCityCodeDefault">
     </section>
-
-    <section class="search-multi-city none" id="search-box-m">
-      <div id="routes">
-        <div class="search-places" index="0">
-          <div class="route-origin">
-            <input
-              name="depCitys[]"
-              type="text"
-              class="tt-input js-city city_default"
-              value
-              id="dep-city-0"
-              autocomplete="off"
-            >
-            <input name="depCityCodes[]" type="hidden" value id="dep-citycode-0" autocomplete="off">
-            <i class="origin-icon"></i>
-          </div>
-          <span class="route-triangle">
-            <span class="triangle-icon"></span>
-          </span>
-          <div class="route-origin">
-            <input
-              name="dstCitys[]"
-              type="text"
-              class="tt-input js-city city_default"
-              id="dst-city-0"
-              autocomplete="off"
-            >
-            <input name="dstCityCodes[]" type="hidden" id="dst-citycode-0" autocomplete="off">
-            <i class="origin-icon"></i>
-          </div>
-          <div class="route-date">
-            <input
-              name="checkinDates[]"
-              type="text"
-              class="tt-input checkin-date"
-              id="checkin-date-0"
-              autocomplete="off"
-              value="2019-06-12"
-              readonly="readonly"
-            >
-            <i class="dates-icon"></i>
-          </div>
-          <div class="remove-route-button disabled">
-            <span class="route-close-icon"></span>
-          </div>
-        </div>
-        <div class="search-places" index="1">
-          <div class="route-origin">
-            <input
-              name="depCitys[]"
-              type="text"
-              class="tt-input js-city city_default"
-              id="dep-city-1"
-              autocomplete="off"
-            >
-            <input name="depCityCodes[]" type="hidden" id="dep-citycode-1" autocomplete="off">
-            <i class="origin-icon"></i>
-          </div>
-          <span class="route-triangle">
-            <span class="triangle-icon"></span>
-          </span>
-          <div class="route-origin">
-            <input
-              name="dstCitys[]"
-              type="text"
-              class="tt-input js-city city_default"
-              id="dst-city-1"
-              autocomplete="off"
-            >
-            <input name="dstCityCodes[]" type="hidden" id="dst-citycode-1" autocomplete="off">
-            <i class="origin-icon"></i>
-          </div>
-          <div class="route-date">
-            <input
-              name="checkinDates[]"
-              type="text"
-              class="tt-input checkin-date"
-              id="checkin-date-1"
-              autocomplete="off"
-              value="2019-06-16"
-              readonly="readonly"
-            >
-            <i class="dates-icon"></i>
-          </div>
-          <div class="remove-route-button disabled">
-            <span class="route-close-icon"></span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <input type="button" class="add-route-button" id="destinaion-add" value="增加航程">
-      </div>
-      <div class="search-pax-cabin-class fl relative" id="option-passengers-m"></div>
-      <button class="large-buttonB"></button>
-    </section>
   </div>
 </template>
 
 <script>
 import searchOptionSwitch from "./search-option-switch";
 import datePicker from "./DatePicker";
+import optionPassagerBox from "./option-passager-box.vue";
+import { setTimeout, clearTimeout } from "timers";
 export default {
   data() {
     return {
-      date: "",
+      // 去程时间
+      date1: "",
+      // 回程时间
+      date2: "",
       // 所有地点胶囊
       showAnywhere: true,
       // 目的城市
-      destinationCity: ""
+      destinationCity: "",
+      isOptionPassagerBoxShow: false,
+      optionPassagerBoxShowTimer: null
     };
+  },
+  methods: {
+    optionPassagerBoxHidden() {
+      this.optionPassagerBoxShowTimer = setTimeout(
+        () => (this.isOptionPassagerBoxShow = false),
+        300
+      );
+    },
+    optionPassagerBoxShow() {
+      if (this.optionPassagerBoxShowTimer) {
+        clearTimeout(this.optionPassagerBoxShowTimer);
+      }
+      this.isOptionPassagerBoxShow = true;
+    }
   },
   components: {
     searchOptionSwitch,
-    datePicker
+    datePicker,
+    optionPassagerBox
   }
 };
 </script>

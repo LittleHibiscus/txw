@@ -1,7 +1,9 @@
 <template>
+  <!-- @mouseleave="changeIsShow" -->
   <div class="zss-date-picker">
     <input class="zss-date-input" type="text" readonly v-model="currentValue" @focus="inputFocus">
     <transition name="fade">
+      <!-- 遮罩层 -->
       <div
         class="zss-picker-model"
         @click.self="modelClick"
@@ -106,7 +108,8 @@ export default {
       currentDate: [], //当前日期
       dateArray: [], //当月日期列表
       firstDate: [], //当月1号
-      yearList: [] //当前年列表
+      yearList: [], //当前年列表
+      isShowTimer: "" //消失计时器
     };
   },
   mounted() {
@@ -268,6 +271,16 @@ export default {
       firstDate.splice(1, 1, month);
       this.select = "date";
       this.getDateArray();
+    },
+    changeIsShow() {
+      // if (this.isShowTimer) {
+      //   clearTimeout(this.isShowTimer);
+      // }
+      // this.isShowTimer = setTimeout(() => {
+      //   this.isShow = false;
+      // }, 300);
+      // this.isShow = false;
+      // return false;
     }
   }
 };
@@ -290,15 +303,6 @@ export default {
   /* border: 1px solid #e6e6e6;= */
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-}
-.zss-date-picker > .zss-date-input {
-  /* width: 100%;
-  height: 100%;
-  border: 0;
-  box-sizing: border-box;
-  font-size: 16px;
-  color: #414141; */
-  /* padding: 0 20px; */
 }
 
 .zss-date-picker {

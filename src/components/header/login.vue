@@ -70,7 +70,7 @@ export default {
   }
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 /* 登陆 注册 */
 .account-box {
@@ -94,6 +94,27 @@ a {
   width: 130px;
   color: #fff;
   font-size: 12px;
+}
+ul::before {
+  border-bottom-color: #d6d9dd;
+  border-width: 11px;
+  margin-left: -11px;
+}
+ul::before,
+ul::after {
+  border: medium solid transparent;
+  bottom: 100%;
+  content: " ";
+  height: 0;
+  left: 50%;
+  pointer-events: none;
+  position: absolute;
+  width: 0;
+}
+ul::after {
+  border-bottom-color: #fff;
+  border-width: 10px;
+  margin-left: -10px;
 }
 .account-info {
   background-color: #fff;
