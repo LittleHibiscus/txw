@@ -1,5 +1,5 @@
 <template>
-  <a class="logo fl" href="javascript:;">
+  <a class="logo fl" href="/">
     <img title="天巡网" :src="require('@/assets/logoB.png')">
   </a>
 </template>

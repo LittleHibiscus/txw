@@ -1,7 +1,7 @@
 <template>
   <div class="city_citybox_jp mgb10">
-    <div class="dropdown dropdownB">
-      <span class="fl" @click="showDropdownList(false)">{{dropdownListItem}}</span>
+    <div class="dropdown dropdownB clearfix">
+      <span @click="showDropdownList(false)">{{dropdownListItem}}</span>
       <i class="fr"></i>
       <ul :class="{'dropdownlist':true,'dropdownlist-hover':true,'none':isHiddenDropdownList}">
         <li
@@ -11,18 +11,12 @@
           @click="showDropdownList(true,t)"
           :class="{on:(t==classOn)}"
         >{{t}}</li>
-        <!-- <option-passager-box-listitem v-for="(t,i) of dropdownList" :key="i" :title="t"></option-passager-box-listitem> -->
-
-        <!-- <li @click="showDropdownList(true)">高端经济舱</li>
-          <li @click="showDropdownList(true)">商务舱</li>
-        <li @click="showDropdownList(true)">头等舱</li>-->
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-// import optionPassagerBoxListitem from "./option-passager-box-listitem";
 export default {
   data() {
     return {
@@ -79,6 +73,9 @@ export default {
   float: right;
   display: block;
   color: #666;
+}
+.dropdown span {
+  width: 100%;
 }
 
 .dropdownB {
