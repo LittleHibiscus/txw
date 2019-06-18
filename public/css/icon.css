@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 
 .icon_flight {
@@ -117,42 +116,41 @@
 }
 
 .ico_cpcx {
-  background-position: -0px -46px;
   width: 36px;
   height: 36px;
   background: url(../../src/assets/icon_fight_la.png) no-repeat;
+  background-position: -0px -46px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
 
 .ico_jpyz {
-  background-position: -45px -46px;
   width: 36px;
   height: 36px;
   background: url(../../src/assets/icon_fight_la.png) no-repeat;
+  background-position: -45px -46px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
 
 .ico_wsxz {
-  background-position: -92px -46px;
   width: 36px;
   height: 36px;
   background: url(../../src/assets/icon_fight_la.png) no-repeat;
+  background-position: -92px -46px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
 
 .ico_tgq {
-  background-position: -138px -46px;
   width: 36px;
   height: 36px;
   background: url(../../src/assets/icon_fight_la.png) no-repeat;
+  background-position: -138px -46px;
   display: inline-block;
   vertical-align: middle;
   margin-right: 5px;
 }
-
