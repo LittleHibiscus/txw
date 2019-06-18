@@ -309,7 +309,7 @@ input {
   border: none;
   border-radius: 3px;
   box-sizing: border-box;
-  height: 36px;
+  height: 33px;
   padding: 8px 8px 8px 32px;
   margin: 0;
   width: 100%;
