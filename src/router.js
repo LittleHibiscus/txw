@@ -5,6 +5,7 @@ import log from "./views/log.vue";
 import seat from "./views/seat.vue";
 import NotFound from "./views/NotFound.vue";
 import Index from "./views/Index.vue";
+import DatePicker from "./components/index/DatePicker"
 
 import order01 from "./components/tx/order01.vue";
 import order02 from "./components/tx/order02.vue";
@@ -21,6 +22,7 @@ export default new Router({
     { path: "/log", component: log },
     { path: "/seat", component: seat },
     { path: "*", component: NotFound },
+    { path: "/DatePicker", component: DatePicker },
     /*子路由 */
     {
       path: "/order",
