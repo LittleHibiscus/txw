@@ -162,7 +162,9 @@ input[type="text"] {
 .search-controls {
   height: auto;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -379px;
+  /* transform: translateX(-50%); 会影响 fixed */
+  /* margin: auto; */
   padding-bottom: 20px;
   background: rgba(69, 61, 84, 0.85) none repeat scroll 0 0;
   color: #fff;
