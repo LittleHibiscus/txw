@@ -1,7 +1,7 @@
 <template>
     <div class="searchBox">
         <table></table>
-        <div class="search">
+        <div class="searchBar">
             <div class="search1">
                 <input type="radio" id="bothway" name="kindWay" checked>
                 <label for="bothway">往返</label>
@@ -384,7 +384,7 @@ export default {
     .searchBox{
         background-color:#f3f2f5;
     }
-    .search{
+    .searchBar{
         margin-left:13%;
         margin-right:13%;
         margin-top:30px;
