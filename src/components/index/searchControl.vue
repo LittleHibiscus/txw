@@ -40,12 +40,12 @@
         <div class="search-dates">
           <div class="depart fl">
             <label class="place-label">去程时间</label>
-            <date-picker v-model="date1"></date-picker>
+            <date-picker v-model="date1" height="36px"></date-picker>
             <i class="dates-icon"></i>
           </div>
           <div class="return fr">
             <label class="place-label">回程时间</label>
-            <date-picker v-model="date2"></date-picker>
+            <date-picker v-model="date2" height="36px"></date-picker>
             <i class="dates-icon"></i>
           </div>
         </div>
@@ -162,7 +162,9 @@ input[type="text"] {
 .search-controls {
   height: auto;
   left: 50%;
-  transform: translateX(-50%);
+  margin-left: -379px;
+  /* transform: translateX(-50%); 会影响 fixed */
+  /* margin: auto; */
   padding-bottom: 20px;
   background: rgba(69, 61, 84, 0.85) none repeat scroll 0 0;
   color: #fff;

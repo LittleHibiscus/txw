@@ -70,7 +70,9 @@
                     </div>
                 </div>
                 <!--切换箭头-->
-                <img src="img/seat/bothway.png" alt="">
+                <span @click="switchImg">
+                    <img src="img/seat/bothway.png"  alt="">
+                </span>    
                 <!--目的地-->
                 <div class="div2">
                     <div @click="div2Click">
@@ -131,18 +133,57 @@
                 </div>
                 <!--出发时间-->
                 <div class="div3">
+                    
+                    <DatePicker class="div3Time"></DatePicker>
                     <img src="img/seat/date.png" alt="">
-                    <input type="text">
                 </div>
                 <!--返回时间-->
                 <div class="div4">
+                    
+                    <DatePicker class="div3Time"></DatePicker>
                     <img src="img/seat/date.png" alt="">
-                    <input type="text">
                 </div>
                 <!--乘客情况-->
                 <div class="div5">
-                    <span>1位乘客，高端经济舱</span>
-                    <img src="img/seat/down.png" alt="">
+                    <div class="click5" @click="div5Click">
+                        <span>1位乘客，{{msgP}}</span>
+                        <img src="img/seat/down.png" alt="">
+                    </div>
+                    <div class="passenger"  v-show="div5open">
+                        <select name="" id="" v-model="p_sel" @change="sel">
+                            <option value="经济舱">经济舱</option>
+                            <option value="高端经济舱">高端经济舱</option>
+                            <option value="商务舱">商务舱</option>
+                            <option value="头等舱">头等舱</option>
+                        </select>
+                        <div class="passengerKind">
+                            <img src="img/seat/teen.png" alt="">
+                            <span>(12岁以上)</span>
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val1"/>
+                                <button>+</button>
+                            </div>
+                        </div>
+                        <div class="passengerKind">
+                            <img src="img/seat/boy.png" alt="">
+                            <span>(2到12岁)</span> 
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val2"/>
+                                <button>+</button>
+                            </div>   
+                        </div>
+                        <div class="passengerKind">
+                            <img src="img/seat/baby.png" alt="">
+                            <span>(2岁以下)</span> 
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val3"/>
+                                <button>+</button>
+                            </div>
+                        </div>
+                   </div>
                 </div>
                 <button class="btn">搜索</button>
             </div>
@@ -151,6 +192,7 @@
     </div>
 </template>
 <script>
+import DatePicker from "../index/DatePicker"
 export default {
     data(){
         return{
@@ -160,6 +202,7 @@ export default {
             div2Text:"所有地点",
             div1open:false,
             div2open:false,
+            div5open:false,
             //
             continent1:true,
             continent2:false,
@@ -172,7 +215,13 @@ export default {
             city3:false,
             city4:false,
             city5:false,
-            city6:false
+            city6:false,
+            //
+            val1:1,
+            val2:0,
+            val3:0,
+            p_sel:"经济舱",
+            msgP:"经济舱"
         }
     },
     methods:{
@@ -187,6 +236,13 @@ export default {
             if(!this.div2open){
                 this.div1open=false;
                 this.div2open=true;
+            }
+        },
+        div5Click(){
+            if(!this.div5open){
+                this.div5open=true;
+            }else{
+                this.div5open=false;
             }
         },
         cbDiv2Click(e){
@@ -304,10 +360,22 @@ export default {
             this.div1open=false;
             this.div2open=false;
             this.div2Text="所有地点";
+        },
+        switchImg(){
+            if(this.div1Text!="中国(CN)" && this.div2Text!="所有地点"){
+                var txt=this.div1Text;
+                this.div1Text=this.div2Text
+                this.div2Text=txt;
+                
+            }
+        },
+        //
+        sel(){
+           this.msgP=this.p_sel   
         }
     },
     components:{
-        
+        DatePicker
     }
 }
 </script>
@@ -329,7 +397,7 @@ export default {
         display:flex;
         align-items:center;
     }
-    .search2>img{
+    .search2>span>img{
         width:50px;height:25px;
         margin:3px;
     }
@@ -368,7 +436,7 @@ export default {
         padding-left:20%;
         width:80%
     }
-    .div5>span{
+    .div5>.click5>span{
         padding-left:5%;
     }
     .div3>img,.div4>img{
@@ -378,7 +446,7 @@ export default {
         width:30px;
         height:30px;
     }
-    .div5>img{
+    .div5>.click5>img{
         position: absolute;
         right:4%;
         top:34%;
@@ -415,6 +483,16 @@ export default {
         top:35px;
         box-shadow: 0 2px 3px #b6b1bd;
     }
+    /*
+    .div3Time{
+        width:80%;
+        height:35px;
+        position:absolute;
+        right:0;
+        top:0;
+        font-weight:200;
+    }
+    */
 /***************************************************************************/
     .cityBox{
         width:540px;
@@ -477,6 +555,46 @@ export default {
     .aChecked{
         background-color: #00b2d6;
         color: #fff !important;
+    }
+    .passenger{
+        position:absolute;
+        top:35px;
+        background-color:#fff;
+        width:212px;
+        display:flex;
+        flex-direction:column;
+        border:1px solid #00B2D6;
+    }
+    .passenger>select{
+        width:80%;
+        padding:5px;
+        margin:10px auto;
+        border:1px solid #00B2D6;
+    }
+    .passengerKind{
+        display:flex;
+        justify-content:space-around;
+        width:80%;
+        align-items:center;
+        margin:0 auto;
+        font-size:12px;
+        color:#858a99;
+    }
+    .passengerKind>img{
+        width:20px;height:20px
+    }
+    .p_btn>button{
+        width:15px;
+        height:15px;
+        line-height:9px;
+    }
+    .p_btn>input{
+        width:13px;
+        height:13px;
+        outline:none;
+        border:0;
+        text-align:center;
+        font-size:3px !important;
     }
 </style>
 

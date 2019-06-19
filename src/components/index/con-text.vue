@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap clearfix">
     <div class="home-con-text mgt20">
       <div class="title">
         <h1>旅行者首选目的地</h1>
@@ -236,9 +236,9 @@
     <!-- 右侧 -->
     <div class="home_side">
       <div class="template mgt10">
-        <a class="tempLeft bb" href="javascript:;" target="_blank" rel="nofollow">
+        <router-link to="seat" class="tempLeft bb"  rel="nofollow">
           <i class="ico_cpcx"></i>网上选座
-        </a>
+        </router-link>
         <router-link to="order/order01" class="tempRight bb" rel="nofollow">
           <i class="ico_jpyz"></i>出票状态
         </router-link>
@@ -253,7 +253,7 @@
           <em>机票验真</em>
           <span>(国内)</span>
         </a>
-        <router-link to="order/order01"  rel="nofollow">
+        <router-link to="order/order01">
           <i class="ico_tgq"></i>退票改签
         </router-link>
       </div>
