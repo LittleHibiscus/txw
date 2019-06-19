@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div class="wrap clearfix">
     <div class="home-con-text mgt20">
       <div class="title">
         <h1>旅行者首选目的地</h1>
@@ -253,7 +253,7 @@
           <em>机票验真</em>
           <span>(国内)</span>
         </a>
-        <router-link to="order/order01"  rel="nofollow">
+        <router-link to="order/order01">
           <i class="ico_tgq"></i>退票改签
         </router-link>
       </div>

@@ -22,8 +22,6 @@ export default {
   },
   watch: {
     key: function() {
-      console.log(this.min);
-      console.log(this.key);
       if (this.key <= this.min) {
         this.canClickReduce = false;
       } else if (this.key >= this.max) {
@@ -116,7 +114,3 @@ input[type="text"] {
   color: #858a99;
 }
 </style>
-
-  
-
-  
