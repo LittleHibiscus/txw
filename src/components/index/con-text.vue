@@ -10,7 +10,7 @@
       <!--旅游者首选机票-->
       <div class="box">
         <div class="one">
-          <a href="javascript:;" target="_blank">
+          <router-link to="/flightInfo" >
             <div class="top">
               <div class="text">
                 <h2>曼谷</h2>
@@ -23,7 +23,7 @@
                 <img :src="require('@/assets/city/BKKT.jpg')">
               </div>
             </div>
-          </a>
+          </router-link>
 
           <a href="javascript:;" target="_blank" dst="TPET">
             <div class="top">

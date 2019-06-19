@@ -8,7 +8,7 @@
         </div>
         <ul class="menu">
             <router-link to="order01"><li class="on">机票订单</li></router-link>
-            <router-link to="order02"><li class="">来自手机</li></router-link>
+            <router-link to="order.02"><li class="">来自手机</li></router-link>
             <router-link to="order03"><li class="">我的关注</li></router-link>
             <router-link to="order04"> <li class="">常用信息</li></router-link>
             <router-link to="order05"> <li class="">账号设置</li></router-link>
