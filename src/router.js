@@ -25,7 +25,6 @@ export default new Router({
     { path: "/seat", component: seat },
     { path: "/flightInfo", component: flightInfo },
     { path: "*", component: NotFound },
-   
     /*子路由 */
     {
       path: "/order",

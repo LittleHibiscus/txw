@@ -6,7 +6,7 @@ const mysql = require("mysql");
 var pool = mysql.createPool({
   host:"127.0.0.1",
   user:"root",
-  password:"root",
+  password:"",
   port:3306,
   database:"txw",
   connectionLimit:15
@@ -49,6 +49,7 @@ server.get("/reguser",(req,res)=>{
   var upwd  = req.query.upwd;
   var truename = req.query.truename;
   var uname = req.query.uname;
+  console.log(loginmode);
   //2.1:sql
   //  INSERT INTO tx_user(qid,ans,tag,loginmode,upwd,truename,uname)
   //              VALUES (2,"问题1",1,"18516835889",MD5("123"),"zx","zhoux")
@@ -59,7 +60,6 @@ server.get("/reguser",(req,res)=>{
   //3.1:返回结果 
   pool.query(sql,[ans2,qid2,ans1,qid1,tag,loginmode,upwd,truename,uname],(err,result)=>{
     if(err)throw err;
-
     if(result.affectedRows==0){
       res.send({code:-1,msg:"注册失败！请重新注册。"});
     }else{
@@ -78,7 +78,7 @@ server.get("/login",(req,res)=>{
 
 
   var sql =" SELECT uid FROM tx_user"; 
-      sql+=" WHERE phone = ?";
+      sql+=" WHERE loginmode = ?";
       sql+=" AND upwd = md5(?)";
   //3:返回结果 
   pool.query(sql,[uname,upwd],(err,result)=>{

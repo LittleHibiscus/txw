@@ -1,6 +1,6 @@
 <template>
-  <header class="main-headerB">
-    <div class="wrap clearfix">
+  <header>
+    <div class="wrap">
       <!-- logo -->
       <logo></logo>
       <!-- 导航栏 -->
@@ -31,16 +31,9 @@ export default {
 </script>
 
 <style scoped>
-.loginlist {
-  left: 790.733px;
-  top: 57px;
-  z-index: 999;
-}
-
 header {
   background-color: #00b2d6;
   height: 60px;
-  font-size: 12px;
   color: #fff;
   box-shadow: 0 2px 3px #b6b1bd;
 }
