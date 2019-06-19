@@ -40,12 +40,12 @@
         <div class="search-dates">
           <div class="depart fl">
             <label class="place-label">去程时间</label>
-            <date-picker v-model="date1"></date-picker>
+            <date-picker v-model="date1" height="36px"></date-picker>
             <i class="dates-icon"></i>
           </div>
           <div class="return fr">
             <label class="place-label">回程时间</label>
-            <date-picker v-model="date2"></date-picker>
+            <date-picker v-model="date2" height="36px"></date-picker>
             <i class="dates-icon"></i>
           </div>
         </div>

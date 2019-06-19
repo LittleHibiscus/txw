@@ -1,7 +1,14 @@
 <template>
   <!-- @mouseleave="changeIsShow" -->
   <div class="zss-date-picker">
-    <input class="zss-date-input" type="text" readonly v-model="currentValue" @focus="inputFocus">
+    <input
+      :style="$attrs"
+      class="zss-date-input"
+      type="text"
+      readonly
+      v-model="currentValue"
+      @focus="inputFocus"
+    >
     <transition name="fade">
       <!-- 遮罩层 -->
       <div
