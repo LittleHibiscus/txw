@@ -236,9 +236,9 @@
     <!-- 右侧 -->
     <div class="home_side">
       <div class="template mgt10">
-        <a class="tempLeft bb" href="javascript:;" target="_blank" rel="nofollow">
+        <router-link to="seat" class="tempLeft bb"  rel="nofollow">
           <i class="ico_cpcx"></i>网上选座
-        </a>
+        </router-link>
         <router-link to="order/order01" class="tempRight bb" rel="nofollow">
           <i class="ico_jpyz"></i>出票状态
         </router-link>

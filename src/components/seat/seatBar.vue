@@ -145,44 +145,44 @@
                 </div>
                 <!--乘客情况-->
                 <div class="div5">
-                    <span>1位乘客，{{msgP}}</span>
-                    <img src="img/seat/down.png" alt="">
-                    <div class="passenger">
+                    <div class="click5" @click="div5Click">
+                        <span>1位乘客，{{msgP}}</span>
+                        <img src="img/seat/down.png" alt="">
+                    </div>
+                    <div class="passenger"  v-show="div5open">
                         <select name="" id="" v-model="p_sel" @change="sel">
                             <option value="经济舱">经济舱</option>
                             <option value="高端经济舱">高端经济舱</option>
                             <option value="商务舱">商务舱</option>
                             <option value="头等舱">头等舱</option>
                         </select>
-                    
-                   
-                    <div class="passengerKind">
-                        <img src="img/seat/teen.png" alt="">
-                        <span>(12岁以上)</span>
-                        <div class="p_btn">
-                            <button>-</button>
-                            <input type="text" :value="val1"/>
-                            <button>+</button>
+                        <div class="passengerKind">
+                            <img src="img/seat/teen.png" alt="">
+                            <span>(12岁以上)</span>
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val1"/>
+                                <button>+</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="passengerKind">
-                        <img src="img/seat/boy.png" alt="">
-                        <span>(2到12岁)</span> 
-                        <div class="p_btn">
-                            <button>-</button>
-                            <input type="text" :value="val2"/>
-                            <button>+</button>
-                        </div>   
-                    </div>
-                    <div class="passengerKind">
-                        <img src="img/seat/baby.png" alt="">
-                        <span>(2岁以下)</span> 
-                        <div class="p_btn">
-                            <button>-</button>
-                            <input type="text" :value="val3"/>
-                            <button>+</button>
+                        <div class="passengerKind">
+                            <img src="img/seat/boy.png" alt="">
+                            <span>(2到12岁)</span> 
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val2"/>
+                                <button>+</button>
+                            </div>   
                         </div>
-                    </div>
+                        <div class="passengerKind">
+                            <img src="img/seat/baby.png" alt="">
+                            <span>(2岁以下)</span> 
+                            <div class="p_btn">
+                                <button>-</button>
+                                <input type="text" :value="val3"/>
+                                <button>+</button>
+                            </div>
+                        </div>
                    </div>
                 </div>
                 <button class="btn">搜索</button>
@@ -202,6 +202,7 @@ export default {
             div2Text:"所有地点",
             div1open:false,
             div2open:false,
+            div5open:false,
             //
             continent1:true,
             continent2:false,
@@ -235,6 +236,13 @@ export default {
             if(!this.div2open){
                 this.div1open=false;
                 this.div2open=true;
+            }
+        },
+        div5Click(){
+            if(!this.div5open){
+                this.div5open=true;
+            }else{
+                this.div5open=false;
             }
         },
         cbDiv2Click(e){
@@ -428,7 +436,7 @@ export default {
         padding-left:20%;
         width:80%
     }
-    .div5>span{
+    .div5>.click5>span{
         padding-left:5%;
     }
     .div3>img,.div4>img{
@@ -438,7 +446,7 @@ export default {
         width:30px;
         height:30px;
     }
-    .div5>img{
+    .div5>.click5>img{
         position: absolute;
         right:4%;
         top:34%;
