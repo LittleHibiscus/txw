@@ -7,7 +7,6 @@ import NotFound from "./views/NotFound.vue";
 import Index from "./views/Index.vue";
 import flightInfo from "./views/flightInfo.vue";
 
-
 import order01 from "./components/tx/order01.vue";
 import order02 from "./components/tx/order02.vue";
 import order03 from "./components/tx/order03.vue";
@@ -15,7 +14,7 @@ import order04 from "./components/tx/order04.vue";
 import order05 from "./components/tx/order05.vue";
 import order06 from "./components/tx/order06.vue";
 import bind_weibo from "./components/tx/bind_weibo.vue";
-
+import zzzz from "./components/seat/seatTable.vue";
 
 Vue.use(Router);
 export default new Router({
@@ -24,6 +23,7 @@ export default new Router({
     { path: "/log", component: log },
     { path: "/seat", component: seat },
     { path: "/flightInfo", component: flightInfo },
+    { path: "/zzzz", component: zzzz },
     { path: "*", component: NotFound },
     /*子路由 */
     {

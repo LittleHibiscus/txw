@@ -41,8 +41,8 @@ import { setTimeout, clearTimeout } from "timers";
 export default {
   data() {
     return {
-      denglu:"",
-      zhuce:"",
+      denglu: "",
+      zhuce: "",
       // 登陆/注册 按钮下的列表
       list: [
         { iconName: "icon_flight", title: "机票订单" },
@@ -56,13 +56,13 @@ export default {
     };
   },
   mounted() {
-    var n=sessionStorage.getItem("userName");
-    if(!n){
-      this.denglu=`欢迎回来：${n}`;
-      this.zhuce=`注销`
-    }else{
-      this.denglu="登陆";
-      this.zhuce="注册"
+    var n = sessionStorage.getItem("userName");
+    if (n) {
+      this.denglu = `欢迎回来：${n}`;
+      this.zhuce = `注销`;
+    } else {
+      this.denglu = "登陆";
+      this.zhuce = "注册";
     }
   },
   methods: {

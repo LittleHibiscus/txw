@@ -1,14 +1,10 @@
 <template>
-  <div
-    @itemValueChange="itemValueChange"
-    class="searchbox-people-option"
-    style="position: absolute; top:40px "
-  >
+  <div class="searchbox-people-option" style="position: absolute; top:40px ">
     <!-- left: 426.217px; top: 96.1334px; z-index: 999; -->
-    <option-passengers-box-list></option-passengers-box-list>
-    <counter title="(12岁以上)" min="1" max="8"></counter>
-    <counter title="(2到12岁)" min="0" max="8"></counter>
-    <counter title="(2岁以下)" min="0" max="8"></counter>
+    <option-passengers-box-list @listValueChange="listValueChange"></option-passengers-box-list>
+    <counter @valueChange="valueChange" title="(12岁以上)" min="1" max="8"></counter>
+    <counter @valueChange="valueChange" title="(2到12岁)" min="0" max="8"></counter>
+    <counter @valueChange="valueChange" title="(2岁以下)" min="0" max="8"></counter>
   </div>
 </template>
 
@@ -19,17 +15,32 @@ export default {
   data() {
     return {
       // 数据库获取机舱名字
-      dropdownList: ["经济舱", "高端经济舱", "商务舱", "头等舱"],
+      dropdownList: ["经济舱", "高端经济舱", "商务舱", "头等舱"]
       // // 乘机人年龄
       // passagerAgeList: ["(12岁以上)", "(2到12岁)", "(2岁以下)"],
-      isShowDropdownList: false,
-      dropdownListItem: "经济舱",
-      classOn: "经济舱"
     };
   },
   methods: {
-    itemValueChange(e) {
-      console.log(e);
+    listValueChange(e) {
+      // 获取机舱名字
+      if (e) {
+        // 向父组件传递机舱名字
+        this.$emit("passengerCabinChange", e);
+      }
+    },
+    valueChange(e) {
+      let result = {};
+      if (e.title == "(12岁以上)") {
+        result.title = "成人";
+      } else if (e.title == "(2到12岁)") {
+        result.title = "儿童";
+      } else if (e.title == "(2岁以下)") {
+        result.title = "婴儿";
+      } else {
+        return;
+      }
+      result.key = e.key;
+      this.$emit("passengerNumChange", result);
     }
   },
   components: {
