@@ -9,7 +9,7 @@
 
 <script>
 import searchControl from "@/components/index/searchControl.vue";
-import conText from "../components/index/con-text.vue";
+import conText from "@/components/index/con-text.vue";
 export default {
   components: {
     searchControl,

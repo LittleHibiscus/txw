@@ -16,7 +16,7 @@
         <div class="alerm">{{alermMsg}}</div>
         <div class="login_input">
             <!--登陆用户名-->
-            <input type="text" placeholder="用户名/邮箱/手机号" v-model="loginUname" 
+            <input type="text" placeholder="用户名/邮箱/手机号" v-model="loginUname" id="userName"
             @blur="blurUname" :class="noUnameClick? ``: (blurUnameSuc? `login_Suc` : `login_fail`)">
             <!--登陆密码-->
             <input type="password" placeholder="登陆密码" v-model="loginPwd" 
@@ -78,26 +78,25 @@
                 this.alermMsg="";
             },
             login(){
+                var url="login"
+                var obj={
+                    loginUname:this.loginUname,
+                    loginPwd:this.loginPwd
+                }
                 if(this.blurUnameSuc==true && this.blurPwdSuc==true){
-                    alert("登陆成功！")
-                }
-                if(!this.loginUname){
-                    this.alermMsg="请输入用户名";
-                    this.blurUnameSuc=false;
-                    this.noUnameClick=false;
-                    return;
-                }
-                if(!this.loginPwd){
-                    this.alermMsg="请输入密码";
-                    this.blurPwdSuc=false;
-                    this.noPwdClick=false;
-                    return;
-                }
-                var pwdReg=/^\w{6,10}$/
-                if(!pwdReg.test(this.loginPwd)){
-                    this.alermMsg="密码必须是6-10位数字、字母或下划线";
-                    this.blurPwdSuc=false;
-                    this.noPwdClick=false;
+                    this.axios.get(url,{params:obj}).then((result)=>
+                        {
+                            console.log(result);
+                            if(result.data.code==1){
+                                alert(result.data.msg);
+                                sessionStorage.setItem("userName",userName.value);
+                                this.$router.push("/");
+                            }else{
+                                alert(result.data.msg);
+                                this.$router.push("/log");
+                            }
+                        }
+                    )
                 }
             },
         }

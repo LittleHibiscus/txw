@@ -1,6 +1,6 @@
 <template>
-  <header class="main-headerB">
-    <div class="wrap clearfix">
+  <header>
+    <div class="wrap">
       <!-- logo -->
       <logo></logo>
       <!-- 导航栏 -->
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import navbar from "@/components/Header/navbar";
-import login from "@/components/Header/login";
-import logo from "@/components/Header/logo";
+import navbar from "@/components/header/navbar";
+import login from "@/components/header/login";
+import logo from "@/components/header/logo";
 export default {
   data() {
     return {};
@@ -25,22 +25,15 @@ export default {
   components: {
     navbar,
     login,
-    logo,
+    logo
   }
 };
 </script>
 
 <style scoped>
-.loginlist {
-  left: 790.733px;
-  top: 57px;
-  z-index: 999;
-}
-
 header {
   background-color: #00b2d6;
   height: 60px;
-  font-size: 12px;
   color: #fff;
   box-shadow: 0 2px 3px #b6b1bd;
 }

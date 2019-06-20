@@ -31,4 +31,3 @@ label {
   cursor: pointer;
 }
 </style>
-

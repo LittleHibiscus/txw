@@ -15,7 +15,7 @@ CNlist:[
 	{name:"Î÷²¿º½¿Õ",src:"img/planeCN/lg_xb.png",href:""},
 	{name:"Ìì½òº½¿Õ",src:"img/planeCN/lg_tj.png",href:""},
 	{name:"ºÓ±±º½¿Õ",src:"img/planeCN/lg_hb.jpg",href:""},
-	{name:"´ºÇïº½¿Õ",src:"img/planeCN/lg_cq.gif",href:""}
+	{name:"´ºÇïº½¿Õ",src:"img/planeCN/lg_cq.png",href:""}
 ]
 
 ENlist:[
