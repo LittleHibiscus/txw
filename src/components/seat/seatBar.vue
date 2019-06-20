@@ -423,6 +423,47 @@ export default {
         top:35px;
         box-shadow: 0 2px 3px #b6b1bd;
     }
+    .passenger{
+        position:absolute;
+        top:35px;
+        background-color:#fff;
+        width:212px;
+        display:flex;
+        flex-direction:column;
+        border:1px solid #00B2D6;
+    }
+    .passenger>select{
+        width:80%;
+        padding:5px;
+        margin:10px auto;
+        border:1px solid #00B2D6;
+    }
+
+    .p_btn>button{
+        width:15px;
+        height:15px;
+        line-height:9px;
+    }
+    .p_btn>input{
+        width:13px;
+        height:13px;
+        outline:none;
+        border:0;
+        text-align:center;
+        font-size:3px !important;
+    }
+    .passengerKind{
+        display:flex;
+        justify-content:space-around;
+        width:80%;
+        align-items:center;
+        margin:0 auto;
+        font-size:12px;
+        color:#858a99;
+    }
+    .passengerKind>img{
+        width:20px;height:20px
+    }
     /*
     .div3Time{
         width:80%;
@@ -498,46 +539,7 @@ export default {
         background-color: #00b2d6;
         color: #fff !important;
     }
-    .passenger{
-        position:absolute;
-        top:35px;
-        background-color:#fff;
-        width:212px;
-        display:flex;
-        flex-direction:column;
-        border:1px solid #00B2D6;
-    }
-    .passenger>select{
-        width:80%;
-        padding:5px;
-        margin:10px auto;
-        border:1px solid #00B2D6;
-    }
-    .passengerKind{
-        display:flex;
-        justify-content:space-around;
-        width:80%;
-        align-items:center;
-        margin:0 auto;
-        font-size:12px;
-        color:#858a99;
-    }
-    .passengerKind>img{
-        width:20px;height:20px
-    }
-    .p_btn>button{
-        width:15px;
-        height:15px;
-        line-height:9px;
-    }
-    .p_btn>input{
-        width:13px;
-        height:13px;
-        outline:none;
-        border:0;
-        text-align:center;
-        font-size:3px !important;
-    }
+
     */
 </style>
 

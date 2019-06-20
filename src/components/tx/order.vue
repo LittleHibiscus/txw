@@ -3,7 +3,7 @@
     <div class="left" id="leftSide" style="height: 600px;">
         <div class="left_lnfo">
             <dl>
-            <dd>欢迎回来<p><b>小渔圈圈。。。</b></p><p></p></dd>
+            <dd>{{huanyinghuilai}}<p><b>{{nicheng}}</b></p><p></p></dd>
             </dl>
         </div>
         <ul class="menu">
@@ -25,7 +25,18 @@ import '../../../public/member1.css'
 export default {
     data(){
         return {
-
+            huanyinghuilai:"",
+            nicheng:""
+        }
+    },
+    mounted(){
+        var n=sessionStorage.getItem("userName");
+        if(n){
+            this.huanyinghuilai="欢迎回来"
+            this.nicheng=n
+        }else{
+            this.huanyinghuilai="未登录"
+            this.nicheng=""
         }
     }
 }
