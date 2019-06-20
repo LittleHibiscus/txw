@@ -55,9 +55,10 @@ export default {
       time: null
     };
   },
-  mounted() {
+  beforeUpdate(){
     var n=sessionStorage.getItem("userName");
-    if(!n){
+    console.log(n);
+    if(n){
       this.denglu=`欢迎回来：${n}`;
       this.zhuce=`注销`
     }else{

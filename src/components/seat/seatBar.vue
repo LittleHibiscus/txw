@@ -10,21 +10,25 @@
                 <input type="radio" id="ways" name="kindWay">
                 <label for="ways">国际多程（含缺口）</label>
             </div>
-            <div class="search2">
-                 <!--出发地-->
+            <div class="search2" >
+                <!--出发地-->
                 <div class="div1">
                     <div @click="div1Click">
                         <input type="text" v-model="div1Text">
                         <span>出发地</span>
                     </div>
+                    <div @mouseleave="div1openHidden" @mouseenter="div1openShow">
+                        <seatTable v-show="div1open" @closeCityBox="closeCityBox"  @selectCity="selectCityStart"></seatTable>
+                    </div>
                     <!--隐藏栏-->
+                    <!--
                     <div class="searchCity" v-show="div1open">
                         <div class="cityBox">
                             <header class="stHeader">
                                 热门城市(可直接输入中文名/拼音/英文名)<span @click="close">x</span>
                             </header>
                             <div class="cbDiv1">
-                                <!--导航栏1-->
+                                
                                 <span>国家/地区</span>
                                 <a href="javascript:;" :class="continent1? 'aChecked' : ''"
                                  @click="continentC1">Top20</a>
@@ -37,13 +41,13 @@
                                 <a href="javascript:;" :class="continent5? 'aChecked' : ''"
                                  @click="continentC5">非洲</a>
                             </div>
-                            <!--内容1-->
+                            
                             <div class="cbDiv2">
                                 <a href="javascript:;" v-for="(item,index) of List1" 
                                 :key="index" :id="index" @click="cbDiv2Click">
                                 {{item}}</a>
                             </div>
-                            <!--导航栏2-->
+                            
                             <div class="cbDiv3">
                                 <span>国内城市</span>
                                 <a href="javascript:;" :class="city1? 'aChecked' : ''"
@@ -59,7 +63,7 @@
                                 <a href="javascript:;" :class="city6? 'aChecked' : ''"
                                  @click="cityC6">UVWXYZ</a>
                             </div>
-                            <!--内容2-->
+                            
                             <div class="cbDiv4">
                                 <a href="javascript:;" v-for="(item,index) of List2" 
                                 :key="index" :id="index" @click="cbDiv4Click">
@@ -68,6 +72,7 @@
                             <div class="cbDiv5"></div>
                         </div>
                     </div>
+                    -->
                 </div>
                 <!--切换箭头-->
                 <span @click="switchImg">
@@ -79,14 +84,18 @@
                         <input type="text" v-model="div2Text">
                         <span>目的地</span>
                     </div>
+                    <div @mouseleave="div2openHidden" @mouseenter="div2openShow">
+                       <seatTable v-show="div2open" @closeCityBox="closeCityBox" @selectCity="selectCityEnd"></seatTable>
+                    </div>
                     <!--隐藏栏-->
+                    <!--
                     <div class="searchCity" v-show="div2open">
                         <div class="cityBox">
                             <header class="stHeader">
                                 热门城市(可直接输入中文名/拼音/英文名)<span @click="close">x</span>
                             </header>
                             <div class="cbDiv1">
-                                <!--导航栏1-->
+                               
                                 <span>国家/地区</span>
                                 <a href="javascript:;" :class="continent1? 'aChecked' : ''"
                                  @click="continentC1">Top20</a>
@@ -99,13 +108,13 @@
                                 <a href="javascript:;" :class="continent5? 'aChecked' : ''"
                                  @click="continentC5">非洲</a>
                             </div>
-                            <!--内容1-->
+                         
                             <div class="cbDiv2">
                                 <a href="javascript:;" v-for="(item,index) of List1" 
                                 :key="index" :id="index" @click="cbDiv2Click">
                                 {{item}}</a>
                             </div>
-                            <!--导航栏2-->
+                          
                             <div class="cbDiv3">
                                 <span>国内城市</span>
                                 <a href="javascript:;" :class="city1? 'aChecked' : ''"
@@ -121,26 +130,26 @@
                                 <a href="javascript:;" :class="city6? 'aChecked' : ''"
                                  @click="cityC6">UVWXYZ</a>
                             </div>
-                            <!--内容2-->
+                            
                             <div class="cbDiv4">
                                 <a href="javascript:;" v-for="(item,index) of List2" 
                                 :key="index" :id="index" @click="cbDiv4Click">
                                 {{item}}</a>
                             </div>
                             <div class="cbDiv5"></div>
+
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <!--出发时间-->
                 <div class="div3">
                     
-                    <DatePicker class="div3Time"></DatePicker>
+                    <DatePicker class="div3Time" v-model="date1"></DatePicker>
                     <img src="img/seat/date.png" alt="">
                 </div>
                 <!--返回时间-->
                 <div class="div4">
-                    
-                    <DatePicker class="div3Time"></DatePicker>
+                    <DatePicker class="div3Time" v-model="date2"></DatePicker>
                     <img src="img/seat/date.png" alt="">
                 </div>
                 <!--乘客情况-->
@@ -193,9 +202,14 @@
 </template>
 <script>
 import DatePicker from "../index/DatePicker"
+import seatTable from "./seatTable"
 export default {
+
     data(){
         return{
+            // 日历选择框日期
+            date1:"",
+            date2:"",
             List1:["123","123","1232","1123","123","123","1223","123","123","13","123","123"],
             List2:["1434","123","1232","1123","123","4","23","43","623","13","123","123"],
             div1Text:"中国(CN)",
@@ -221,7 +235,10 @@ export default {
             val2:0,
             val3:0,
             p_sel:"经济舱",
-            msgP:"经济舱"
+            msgP:"经济舱",
+            // 下拉城市列表定时器
+            div1openTimer:null,
+            div2openTimer:null,
         }
     },
     methods:{
@@ -245,117 +262,6 @@ export default {
                 this.div5open=false;
             }
         },
-        cbDiv2Click(e){
-            var index1=e.target.id;
-            //console.log(index1)
-            if(this.div1open==true){
-                this.div1Text=this.List1[index1];
-                this.div1open=false;
-            }else if(this.div2open==true){
-                this.div2Text=this.List1[index1];
-                this.div2open=false;
-            }
-        },
-        cbDiv4Click(e){
-            var index2=e.target.id;
-            //console.log(index2)
-            if(this.div1open==true){
-                this.div1Text=this.List2[index2];
-                this.div1open=false;
-            }else if(this.div2open==true){
-                this.div2Text=this.List2[index2];
-                this.div2open=false;
-            }
-        },
-        continentC1(){
-            this.continent1=true;
-            this.continent2=false;
-            this.continent3=false;
-            this.continent4=false;
-            this.continent5=false;
-            this.List1=["123","123","1232","1123","123",
-            "123","1223","123","123","13","123","123"];
-        },
-        continentC2(){
-            this.continent1=false;
-            this.continent2=true;
-            this.continent3=false;
-            this.continent4=false;
-            this.continent5=false;
-            this.List1=["32","543","1","233","yr","ge","yr","ge"];
-        },
-        continentC3(){
-            this.continent1=false;
-            this.continent2=false;
-            this.continent3=true;
-            this.continent4=false;
-            this.continent5=false;
-            this.List1=["32","543","1","ge","yr","ge"];
-        },
-        continentC4(){
-            this.continent1=false;
-            this.continent2=false;
-            this.continent3=false;
-            this.continent4=true;
-            this.continent5=false;
-            this.List1=["32","233","yr12","ge","yr","ge"];
-        },
-        continentC5(){
-            this.continent1=false;
-            this.continent2=false;
-            this.continent3=false;
-            this.continent4=false;
-            this.continent5=true;
-            this.List1=["32","233","yr12","yr12","yr12","ge","yr","ge"];
-        },
-        cityC1(){
-            this.city1=true;
-            this.city2=false;
-            this.city3=false;
-            this.city4=false;
-            this.city5=false;
-            this.city6=false;             
-        },
-        cityC2(){
-            this.city1=false;
-            this.city2=true;
-            this.city3=false;
-            this.city4=false;
-            this.city5=false;
-            this.city6=false;
-        },
-        cityC3(){
-            this.city1=false;
-            this.city2=false;
-            this.city3=true;
-            this.city4=false;
-            this.city5=false;
-            this.city6=false;
-        },
-        cityC4(){
-            this.city1=false;
-            this.city2=false;
-            this.city3=false;
-            this.city4=true;
-            this.city5=false;
-            this.city6=false;
-        },
-        cityC5(){
-            this.city1=false;
-            this.city2=false;
-            this.city3=false;
-            this.city4=false;
-            this.city5=true;
-            this.city6=false;
-        },
-        cityC6(){
-            this.city1=false;
-            this.city2=false;
-            this.city3=false;
-            this.city4=false;
-            this.city5=false;
-            this.city6=true;
-        },                                
         close(){
             this.div1open=false;
             this.div2open=false;
@@ -372,10 +278,44 @@ export default {
         //
         sel(){
            this.msgP=this.p_sel   
+        },
+        // 接收子组件参数
+        selectCityStart(e){
+            this.div1Text=e;
+        },
+        selectCityEnd(e){
+            this.div2Text=e;
+        },
+        // 选择城市列表(隐藏显示)
+        div1openHidden(){
+            this.div1openTimer=setTimeout(()=>{
+                this.div1open = false;
+            },200)
+        },
+        div1openShow(){
+            if(this.div1openTimer){
+                clearTimeout(this.div1openTimer);
+            }
+            this.div1open = true;
+        },
+        div2openHidden(){
+            this.div2openTimer=setTimeout(()=>{
+                this.div2open = false;
+            },200)
+        },
+        div2openShow(){
+            if(this.div2openTimer){
+                clearTimeout(this.div2openTimer);
+            }
+            this.div2open = true;
+        },
+        closeCityBox(){
+            this.div1open=false;
+            this.div2open=false;
         }
     },
     components:{
-        DatePicker
+        DatePicker,seatTable
     }
 }
 </script>
@@ -493,7 +433,9 @@ export default {
         font-weight:200;
     }
     */
-/***************************************************************************/
+    /***************************************************************************/
+    /*
+
     .cityBox{
         width:540px;
     }
@@ -596,5 +538,6 @@ export default {
         text-align:center;
         font-size:3px !important;
     }
+    */
 </style>
 
