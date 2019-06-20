@@ -828,8 +828,19 @@ b{
     font-size: 12px;
 }
 
-
-
+.orderlist {
+    line-height: 24px;
+    text-align: center;
+}
+.info{
+    display: flex;
+    justify-content: space-around;
+}
+.fill>div{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
 
 
 
