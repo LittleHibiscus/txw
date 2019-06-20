@@ -10,9 +10,9 @@
       <div class="mgt1">
         <!-- 未登录时状态 -->
         <div class="clearfix">
-          <router-link to="/log" class="fl mgl5">登录</router-link>
+          <router-link to="/log" class="fl mgl5">{{denglu}}</router-link>
           <span class="fl mgl5">|</span>
-          <router-link to="/log" class="fl mgl5">注册</router-link>
+          <router-link to="/log" class="fl mgl5">{{zhuce}}</router-link>
         </div>
         <!-- 登陆后的用户名 -->
         <div id="account-username" class="clearfix none">
@@ -41,6 +41,8 @@ import { setTimeout, clearTimeout } from "timers";
 export default {
   data() {
     return {
+      denglu:"",
+      zhuce:"",
       // 登陆/注册 按钮下的列表
       list: [
         { iconName: "icon_flight", title: "机票订单" },
@@ -52,6 +54,17 @@ export default {
       listStatus: false,
       time: null
     };
+  },
+  beforeUpdate(){
+    var n=sessionStorage.getItem("userName");
+    console.log(n);
+    if(n){
+      this.denglu=`欢迎回来：${n}`;
+      this.zhuce=`注销`
+    }else{
+      this.denglu="登陆";
+      this.zhuce="注册"
+    }
   },
   methods: {
     changeListStatus(s) {

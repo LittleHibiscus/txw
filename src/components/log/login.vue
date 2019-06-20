@@ -16,7 +16,7 @@
         <div class="alerm">{{alermMsg}}</div>
         <div class="login_input">
             <!--登陆用户名-->
-            <input type="text" placeholder="用户名/邮箱/手机号" v-model="loginUname" 
+            <input type="text" placeholder="用户名/邮箱/手机号" v-model="loginUname" id="userName"
             @blur="blurUname" :class="noUnameClick? ``: (blurUnameSuc? `login_Suc` : `login_fail`)">
             <!--登陆密码-->
             <input type="password" placeholder="登陆密码" v-model="loginPwd" 
@@ -89,6 +89,7 @@
                             console.log(result);
                             if(result.data.code==1){
                                 alert(result.data.msg);
+                                sessionStorage.setItem("userName",userName.value);
                                 this.$router.push("/");
                             }else{
                                 alert(result.data.msg);

@@ -6,7 +6,7 @@ import seat from "./views/seat.vue";
 import NotFound from "./views/NotFound.vue";
 import Index from "./views/Index.vue";
 import flightInfo from "./views/flightInfo.vue";
-
+import seatTable from "./components/seat/seatTable.vue";
 
 import order01 from "./components/tx/order01.vue";
 import order02 from "./components/tx/order02.vue";
@@ -23,6 +23,7 @@ export default new Router({
     { path: "/", component: Index },
     { path: "/log", component: log },
     { path: "/seat", component: seat },
+    { path: "/seatTable", component: seatTable },
     { path: "/flightInfo", component: flightInfo },
     { path: "*", component: NotFound },
     /*子路由 */
