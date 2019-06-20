@@ -27,10 +27,12 @@ export default new Router({
       path:'/order',
       name:'order',
       component:()=>import('./components/tx/order.vue'),
+      
       children:[
         {
           path:'order01',
-          component:order01
+          component:order01,
+          props:true,
         },
         {
           path:'order02',

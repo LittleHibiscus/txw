@@ -2,7 +2,7 @@
 <div class="mail" id="main">
     <div class="tabA mgt10">
         <a class="active"   @click="change1" >直接预订</a>
-        <a href="http://127.0.0.1:8080/#/order/order06">跳转记录</a>
+        <router-link to="/order/order06">跳转记录</router-link>
         <div class="cursor mgr10 fr " style="font-size:12px;margin-top:21px;" @click="change2" >非会员订单查询</div>
     </div>
     <div class="cboth"></div>
@@ -143,7 +143,6 @@
 import '../../../public/member1.css'
 import sidentify from "./code.vue"
 import supplier from "./alert.vue"
-
 export default {
     data(){
         return {
@@ -154,6 +153,14 @@ export default {
             msg:"支持的供应商:携程旅行，去哪儿网，途牛，中国南方航空官网",
             type:1
         }
+    },
+    created(){
+        this.dis=this.$route.query.dis;
+    },
+    watch:{
+         '$route'(){
+             this.dis=false;
+         }
     },
     components:{
         sidentify,
@@ -186,7 +193,7 @@ export default {
                    this.randomNum(0,this.identifyCodes.length)
                ];
            }
-       },
+       }
     }
 
 }
