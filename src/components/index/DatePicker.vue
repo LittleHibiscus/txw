@@ -229,6 +229,7 @@ export default {
       let nextMonthDate = momnet(this.firstDate.join("-"))
         .startOf("month")
         .add(1, "month");
+      console.log(nextMonthDate);
       this.firstDate = nextMonthDate.format("YYYY-MM-DD").split("-");
       this.getDateArray();
     },
