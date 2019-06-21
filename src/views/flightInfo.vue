@@ -30,14 +30,36 @@
         <!-- 具体城市  start -->
         <div class="search_city">
             <div class="search_title">
-                <p>城市</p>
-                <p>航空公司</p>
-                <p>每成人票价(含税)↑</p>
+                <p>出发地</p>
+                <p>转机城市</p>
+                <p>目的地</p>
+                
+                <p>起飞航空公司</p>
+                <p>目的地航空公司</p>
+                <p>直飞(含税)↑</p>
+                <p>往返(含税)↑</p>
+                <p>起飞时间</p>
+                <p>到达时间</p>
+                <p>价格</p>
             </div>
-            <div class="city_detail">
-                <span>昆明</span>
-                <span>Thai AirAsia</span>
-                <button>￥{{price}}</button>
+
+            <div class="city_detail" v-for="(p,i) of txplacelist" :key="i"  >
+                <span>{{p.saddresscity}}</span>
+                <span>{{p.caddresscity}}</span> 
+                <span>{{p.eaddresscity}}</span>
+
+                <span>{{p.splanecompany}}</span>
+                <span>{{p.eplanecompany}}</span>
+                <span>￥{{p.directflyprice}}</span>
+                <span>￥{{p.roundflyprice}}</span>
+                <span>{{momnet(new Date(p.stime)).format("YYYY-MM-DD hh:mm")}}</span>
+                <span>{{momnet(new Date(p.etime)).format("YYYY-MM-DD hh:mm")}}</span>    
+                <button >
+                    <a class="target" href="https://www.ly.com/iflight/flight-book2.re.aspx?refid=6983976&adult=1&child=0&unitKey=AMADEUS_627_HKGH33296_RT_SHA_TYO_201910162115_ADT1_CHD0_MU5603_20191016%2FNH0926_20191017%7CNH0925_20191020%2FMU5602_20191021_K_K_K_K_BAM-19_BAM-19_BAM-19_BAM-19_0_ATPCO&traceId=LM20190620172516TJ2TAPYYT0KZK9GTDV1SO10TW062R7WEJTL032L3P6IOBE50&resourceId=OS&pricingSerialNo=LM_THL_GLMTCTH&og=c463c089ab7f47c7a880dcc2707bd8c62019-06-20%2017%3A25%3A34%5ERT_SHA%2FTYO%2F20191016%3BTYO%2FSHA%2F20191020_ADT-1%7CCHD-0%7CINF-0_Y%7CS%7CF%7CC__545413741_V1%5EMU5603_20191016%2FNH0926_20191017%7CNH0925_20191020%2FMU5602_20191021&skyscanner_redirectid=OV5MqpM-EemzqAJCrBEACg" target="_blank">
+                    ￥{{p.roundflyprice}}</a>
+              </button>
+
+
             </div>
         </div>
         <!-- 具体城市  end -->
@@ -46,11 +68,27 @@
 </div>
 </template>
 <script>
+import momnet from "moment";
 export default {
+    created(){
+        this.axios.get("/txplace",{}).then((result)=>
+        {
+            console.log(result.data.data);
+
+            this.txplacelist=result.data.data;
+
+            console.log(this.txplacelist[0].caddresscity);
+        })
+    },
     data(){
         return {
-
+            price:0,
+            txplacelist:[],
+            momnet
         }
+    },
+    methods:{
+
     }
 }
 </script>
@@ -117,13 +155,13 @@ export default {
 }
 .search_city>.search_title{
     display: flex;
-    justify-content: space-between;
-    padding:0 10px;
+    justify-content: space-around;
+    /* padding:0 5px; */
     border-bottom:1px solid #ccc;
     height:30px;
 }
 .city_detail>span{
-    font-size: 20px;
+    font-size: 12px;
    margin-top:12px;
 }
 .search_city>.city_detail{
@@ -150,6 +188,11 @@ export default {
 i{
     font-size: 20px;
 }
+
+.target{
+    color: #fff;
+}
+
 </style>
 
 
