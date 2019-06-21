@@ -15,7 +15,7 @@ import order04 from "./components/tx/order04.vue";
 import order05 from "./components/tx/order05.vue";
 import order06 from "./components/tx/order06.vue";
 import bind_weibo from "./components/tx/bind_weibo.vue";
-
+import zzzz from "./components/seat/seatTable.vue";
 
 Vue.use(Router);
 export default new Router({
@@ -25,6 +25,7 @@ export default new Router({
     { path: "/seat", component: seat },
     { path: "/seatTable", component: seatTable },
     { path: "/flightInfo", component: flightInfo },
+    { path: "/zzzz", component: zzzz },
     { path: "*", component: NotFound },
     /*子路由 */
     {

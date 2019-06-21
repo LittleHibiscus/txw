@@ -9,15 +9,10 @@
       <i class="user-icon fl mgt2"></i>
       <div class="mgt1">
         <!-- 未登录时状态 -->
-        <div class="clearfix" v-if="clearfixShow">
-          <router-link to="/log" class="fl mgl5">登陆</router-link>
+        <div class="clearfix">
+          <router-link to="/log" class="fl mgl5">{{denglu}}</router-link>
           <span class="fl mgl5">|</span>
-          <router-link to="/log" class="fl mgl5">注册</router-link>
-        </div>
-        <div class="clearfix" v-else>
-          <a href="javascript" class="fl mgl5">{{wel}}</a>
-          <span class="fl mgl5">|</span>
-          <a href="javascript" class="fl mgl5" @click="cancel">注销</a>
+          <router-link to="/log" class="fl mgl5">{{zhuce}}</router-link>
         </div>
         <!-- 登陆后的用户名 -->
         <div id="account-username" class="clearfix none">
@@ -46,8 +41,8 @@ import { setTimeout, clearTimeout } from "timers";
 export default {
   data() {
     return {
-      wel:"",
-      clearfixShow:true,
+      denglu: "",
+      zhuce: "",
       // 登陆/注册 按钮下的列表
       list: [
         { iconName: "icon_flight", title: "机票订单" },
@@ -60,19 +55,23 @@ export default {
       time: null
     };
   },
+<<<<<<< HEAD
+  beforeUpdate(){
+    var n = sessionStorage.getItem("userName");
+=======
   created(){
     var n=sessionStorage.getItem("userName");
+>>>>>>> 9e5aa0c22745cff618ce14ceedde95241e2e81f5
     console.log(n);
-    if(n){
-      this.clearfixShow=false;
-      this.wel=`欢迎回来：${n}`;
+    if (n) {
+      this.denglu = `欢迎回来：${n}`;
+      this.zhuce = `注销`;
+    } else {
+      this.denglu = "登陆";
+      this.zhuce = "注册";
     }
   },
   methods: {
-    cancel(){
-      this.clearfixShow=true;
-      sessionStorage.removeItem('userName');
-    },
     changeListStatus(s) {
       if (!s) {
         this.time = setTimeout(() => {
