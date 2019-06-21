@@ -1,18 +1,24 @@
 <template>
   <div class="search-controls relative">
     <search-option-switch></search-option-switch>
-    <section id="search-box-s">
+    <section>
       <div class="search-places search-places-f1">
         <div class="origin fl">
           <label class="place-label">出发城市</label>
           <input
-            id="depCity"
             type="text"
             class="tt-input js-city"
-            value="中国(CN)"
+            v-model="placeStart"
             autocomplete="off"
+            @mouseenter="seatTable1Show"
+            @mouseleave="seatTable1Hidden"
           >
-
+          <!-- 
+              选择城市列表
+          -->
+          <div class="pa" @mouseenter="seatTable1Show" @mouseleave="seatTable1Hidden">
+            <seat-table @selectCity="selectCity1" v-show="isSeatTableShow1"></seat-table>
+          </div>
           <i class="origin-icon"></i>
         </div>
         <a class="swap-exchange">
@@ -23,17 +29,21 @@
           <span class="anywhere" v-show="showAnywhere">所有地点</span>
           <input
             type="text"
-            id="dstCity"
             class="tt-input js-city default"
             v-model="destinationCity"
             @focus="showAnywhere=false"
             @blur="showAnywhere=!destinationCity"
+            @mouseenter="seatTable2Show"
+            @mouseleave="seatTable2Hidden"
             autocomplete="off"
           >
-          <input type="hidden" id="dstCityCountry" value autocomplete="off">
+          <!-- <input type="hidden" id="dstCityCountry" value autocomplete="off">
           <input type="hidden" id="dstCityCode" value autocomplete="off">
-          <input type="hidden" id="dstCityCode4" value>
+          <input type="hidden" id="dstCityCode4" value>-->
           <i class="destination-icon"></i>
+          <div class="pa" @mouseenter="seatTable2Show" @mouseleave="seatTable2Hidden">
+            <seat-table @selectCity="selectCity2" v-show="isSeatTableShow2"></seat-table>
+          </div>
         </div>
       </div>
       <div class="search-places search-places-f2">
@@ -54,20 +64,28 @@
           <label class="place-label">人数 &amp; 舱位</label>
 
           <div class="cabin-class-travellers-trigger" @click="optionPassagerBoxShow()">
-            <span id="passengers">
+            <span>
               <i class="adult-icon"></i>
-              <span class="mgr5">
-                <span id="search-option-adult-txt">1</span>成人
-              </span>，
+              <!-- <span class="mgr5">
+                <span id="search-option-adult-txt">1</span>
+                成人
+              </span>，-->
+              <span v-for="(t,i) of passengerInfo" :key="i" class="mgr5">
+                <span>{{t.key}}</span>
+                {{t.title}}
+              </span>,
             </span>
-            <span id="cabin-class-intl">经济舱</span>
+            <span id="cabin-class-intl">{{passengerCabin}}</span>
             <i class="down-arrow fr mgt6"></i>
             <div
               @mouseleave="optionPassagerBoxHidden()"
               @mouseenter="optionPassagerBoxShow()"
               :class="{'none':!isOptionPassagerBoxShow}"
             >
-              <option-passager-box></option-passager-box>
+              <option-passager-box
+                @passengerCabinChange="passengerCabinChange"
+                @passengerNumChange="passengerNumChange"
+              ></option-passager-box>
             </div>
           </div>
         </div>
@@ -93,7 +111,7 @@
 import searchOptionSwitch from "./search-option-switch";
 import datePicker from "./DatePicker";
 import optionPassagerBox from "./option-passager-box.vue";
-import { setTimeout, clearTimeout } from "timers";
+import seatTable from "../seat/seatTable";
 export default {
   data() {
     return {
@@ -103,11 +121,27 @@ export default {
       date2: "",
       // 所有地点胶囊
       showAnywhere: true,
-      // 目的城市
-      destinationCity: "",
       isOptionPassagerBoxShow: false,
-      optionPassagerBoxShowTimer: null
+      optionPassagerBoxShowTimer: null,
+      // 客舱名字
+      passengerCabin: "经济舱",
+      // 乘客
+      passengerInfo: [{ title: "成人", key: "1" }],
+      // 选择开始城市列表隐藏显示
+      isSeatTableShow1: false,
+      isSeatTableShow2: false,
+      // 出发城市
+      placeStart: "中国(CN)",
+      // 目标城市
+      destinationCity: ""
     };
+  },
+  watch: {
+    destinationCity() {
+      if (this.destinationCity) {
+        this.showAnywhere = false;
+      }
+    }
   },
   methods: {
     optionPassagerBoxHidden() {
@@ -121,12 +155,59 @@ export default {
         clearTimeout(this.optionPassagerBoxShowTimer);
       }
       this.isOptionPassagerBoxShow = true;
+    },
+    /* 子组件
+       ====================================================================== */
+    passengerCabinChange(e) {
+      this.passengerCabin = e;
+    },
+    passengerNumChange(e) {
+      console.log(e);
+      let i, len;
+      i = 0;
+      len = this.passengerInfo.length;
+      for (; i < len; i++) {
+        if (e.title == this.passengerInfo[i].title) {
+          this.passengerInfo[i].key = e.key;
+          if (e.key == 0) {
+            this.passengerInfo.splice(i, 1);
+          }
+          return;
+        } else {
+        }
+      }
+      this.passengerInfo.push(e);
+      return;
+    },
+    seatTable1Hidden() {
+      this.isSeatTableShow1 = false;
+    },
+    seatTable1Show() {
+      this.isSeatTableShow1 = true;
+    },
+    seatTable2Hidden() {
+      this.isSeatTableShow2 = false;
+      if (!this.destinationCity) {
+        this.showAnywhere = true;
+      }
+    },
+    seatTable2Show() {
+      this.isSeatTableShow2 = true;
+      this.showAnywhere = false;
+    },
+    // 选择城市下拉框
+    selectCity1(e) {
+      this.placeStart = e;
+    },
+    selectCity2(e) {
+      this.destinationCity = e;
     }
   },
   components: {
     searchOptionSwitch,
     datePicker,
-    optionPassagerBox
+    optionPassagerBox,
+    seatTable
   }
 };
 </script>
@@ -161,8 +242,9 @@ input[type="text"] {
    ========================================================================== */
 .search-controls {
   height: auto;
+  width: 663px;
   left: 50%;
-  margin-left: -379px;
+  margin-left: -333px;
   /* transform: translateX(-50%); 会影响 fixed */
   /* margin: auto; */
   padding-bottom: 20px;
@@ -220,6 +302,7 @@ label {
 .search-places .destination {
   width: 48%;
   position: relative;
+  z-index: 9999;
 }
 .search-places .place-label {
   color: #b6b1bd;
