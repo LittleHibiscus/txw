@@ -126,4 +126,12 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 /*
 INSERT INTO tx_user(ans1,qid1,ans2,qid2,tag,phone,upwd,truename,uname) VALUES ("问题1",1,"问题2",2,1,"18516835889",MD5("123"),"zx1","zhoux1")
+
+insert into tx_order(OID,ORDERID,pid,Aircrew,OTIME,OTAG,MONEY,trip,flighttype,sairport,saddresscity,eairport,eaddresscity,caddresscity,stime,etime,flytime,aircompany,aviationNumber,aircrafttype,cid,mailaddress)
+VALUES(1,'836-2015786914',1,1,'2019-06-20',6,3500,1,1,'北京T2航站','北京','曼谷机场','曼谷','日本',1552528050000,1552528050000,'13:30','国际航空公司','CCA','波音747',1,'北京海淀区28号');
+
+insert into tx_order(OID,ORDERID,pid,Aircrew,OTIME,OTAG,MONEY,trip,flighttype,sairport,saddresscity,eairport,eaddresscity,caddresscity,stime,etime,flytime,aircompany,aviationNumber,aircrafttype,cid,mailaddress)
+VALUES(2,'836-2015786914',1,2,'2019-06-20',6,3500,1,1,'北京T2航站','北京','曼谷机场','曼谷','日本',1552528050000,1552528050000,'13:30','国际航空公司','CCA','波音747',1,'北京海淀区28号');
+
 */
+
