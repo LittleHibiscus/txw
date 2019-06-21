@@ -17,7 +17,7 @@
         <div class="clearfix" v-else>
           <a href="javascript" class="fl mgl5">{{wel}}</a>
           <span class="fl mgl5">|</span>
-          <a href="javascript" class="fl mgl5" @click="cancel">注销</a>
+          <a class="fl mgl5" @click="cancel">注销</a>
         </div>
         <!-- 登陆后的用户名 -->
         <div id="account-username" class="clearfix none">
