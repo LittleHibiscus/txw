@@ -1,7 +1,7 @@
 <template>
 <div class="mail" id="main">
     <div class="tabA mgt10">
-            <router-link to="/order/order01">直接预订</router-link>
+            <router-link :to="{path:'/order/order01',query:{abl:true}}">直接预订</router-link>
             <a class="active">跳转记录</a>
             <router-link :to="{path:'/order/order01',query:{dis:false}}" class="cursor mgr10 fr" style="font-size:12px;margin-top:21px;">非会员订单查询</router-link>
         </div>

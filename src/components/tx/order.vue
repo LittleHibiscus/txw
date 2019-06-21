@@ -7,7 +7,7 @@
             </dl>
         </div>
         <ul class="menu">
-            <router-link to="/order/order01"><li class="on">机票订单</li></router-link>
+            <router-link :to="{path:'/order/order01',query:{abl:true}}"><li class="on">机票订单</li></router-link>
             <router-link to="/order/order02"><li class="">来自手机</li></router-link>
             <router-link to="/order/order03"><li class="">我的关注</li></router-link>
             <router-link to="/order/order04"> <li class="">常用信息</li></router-link>

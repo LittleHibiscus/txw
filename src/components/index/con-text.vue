@@ -239,7 +239,7 @@
         <router-link to="seat" class="tempLeft bb"  rel="nofollow">
           <i class="ico_cpcx"></i>网上选座
         </router-link>
-        <router-link to="order/order01" class="tempRight bb" rel="nofollow">
+        <router-link :to="{path:'/order/order01',query:{abl:true}}" class="tempRight bb" rel="nofollow">
           <i class="ico_jpyz"></i>出票状态
         </router-link>
         <a

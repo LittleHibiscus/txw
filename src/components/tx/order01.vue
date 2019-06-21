@@ -106,7 +106,7 @@
         </div>
         <!-- end -->
         <!-- 直接预订页面开始-->
-        <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="dis==true">
+        <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="abl==true">
             <div style="margin:20px; height:30px;width:850px">
                 <span class="fl pt3">订单开始时间：</span>
                 <div class="dateDiv">
@@ -147,6 +147,7 @@ export default {
     data(){
         return {
             dis:true,
+            abl:true,
             identifyCode:'1mj4',
             identifyCodes:"1234567890wiserui",
             showDialog:false,
@@ -156,12 +157,13 @@ export default {
     },
     created(){
         this.dis=this.$route.query.dis;
+        this.abl=this.$route.query.abl;
     },
-    watch:{
+   /* watch:{
          '$route'(){
              this.dis=false;
          }
-    },
+    },*/
     components:{
         sidentify,
         supplier
@@ -174,7 +176,8 @@ export default {
            this.showDialog=!this.showDialog;
        },
        change1(){
-           this.dis=true
+           this.abl=true;
+           this.dis=true;
        },
        change2(){
            this.dis=false
