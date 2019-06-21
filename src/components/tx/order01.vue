@@ -2,7 +2,7 @@
 <div class="mail" id="main">
     <div class="tabA mgt10">
         <a class="active"   @click="change1" >直接预订</a>
-        <a href="http://127.0.0.1:8080/#/order/order06">跳转记录</a>
+        <router-link to="/order/order06">跳转记录</router-link>
         <div class="cursor mgr10 fr " style="font-size:12px;margin-top:21px;" @click="change2" >非会员订单查询</div>
     </div>
     <div class="cboth"></div>
@@ -22,7 +22,7 @@
                 <input type="hidden" name="action" value="query">
 
                 <div class="loginbox" style="width:60%">
-                    <li class="xgmd" style="background-color:transparent; border: none; box-shadow: none; margin-left: 0; margin-top: 0;">
+                    <li class="xgmd" style="background-color:transparent;">
                         <div class="mgb20 mgl40" id="query-type">
                             <label><input name="queryType" autocomplete="off" value="mobile" type="radio" checked="">手机号查询</label>
                             <label class="mgl10"><input name="queryType" autocomplete="off" value="order" type="radio">订单号查询</label>
@@ -110,12 +110,13 @@
             <div style="margin:20px; height:30px;width:850px">
                 <span class="fl pt3">订单开始时间：</span>
                 <div class="dateDiv">
-                        <input type="text" name="startDate" id="startDate" value="2019-05-10" readonly="readonly">
+                        <date-picker v-model="date1" fontSize="12px" fontWeight="600" padding="0"></date-picker>
                         <span class="dateImg"></span>
                 </div>
                 <span class="fl pt3 mgl30">订单结束时间：</span>
                 <div class="dateDiv">
-                        <input type="text" name="endDate" id="endDate" value="2019-06-10" readonly="readonly">
+                        <!-- <input type="text" name="endDate" id="endDate" value="2019-06-10" readonly="readonly"> -->
+                        <date-picker v-model="date2" fontSize="12px" fontWeight="600" padding="0"></date-picker>
                         <span class="dateImg"></span>
                 </div>
                 <span class="fl pt3 mgl30">状态：</span>
@@ -143,10 +144,15 @@
 import '../../../public/member1.css'
 import sidentify from "./code.vue"
 import supplier from "./alert.vue"
+import DatePicker from "../index/DatePicker"
 
 export default {
     data(){
         return {
+            // 日期
+            date1:"",
+            date2:"",
+            
             dis:true,
             identifyCode:'1mj4',
             identifyCodes:"1234567890wiserui",
@@ -155,9 +161,18 @@ export default {
             type:1
         }
     },
+    created(){
+        this.dis=this.$route.query.dis;
+    },
+    watch:{
+         '$route'(){
+             this.dis=false;
+         }
+    },
     components:{
         sidentify,
-        supplier
+        supplier,
+        DatePicker
     },
     methods:{
        closesupplier(){
@@ -186,7 +201,7 @@ export default {
                    this.randomNum(0,this.identifyCodes.length)
                ];
            }
-       },
+       }
     }
 
 }

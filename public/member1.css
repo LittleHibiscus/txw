@@ -114,7 +114,7 @@ element.style {
 a:link, a:visited, .spanLink, a:hover, .spanLink:hover {
     text-decoration: none;
 }
-a {
+#getSuppliers {
     cursor: pointer;
     color: #00b2d6;
 }
@@ -505,6 +505,9 @@ span, a, input, button {
 a:hover {
     color: #ff6600;
 }
+#getSuppliers:hover {
+    color: #ff6600;
+}
 .xgmd {
     width: 390px;
     padding: 30px 20px 10px 20px;
@@ -827,9 +830,154 @@ b{
     color: #CCC9D4;
     font-size: 12px;
 }
+/* 跳转记录 */
+.mail {
+    width: 960px;
+    float: right;
+    margin-right: 30px;
+}
+.tabA {
+    border-bottom: 1px solid #CCC9D4;
+    height: 40px;
+    font-size: 14px;
+    color: #00B2D6;
+}
+.mgt10 {
+    margin-top: 10px !important;
+}
+.tabA a {
+    float: left;
+    color: #524C61;
+    cursor: pointer;
+    padding: 15px 15px 6px;
+    display: block;
+}
+.tabA .active {
+    color: #00B2D6;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px solid #00B2D6;
+}
+.tabA a {
+    float: left;
+    color: #524C61;
+    cursor: pointer;
+    padding: 15px 15px 6px;
+    display: block;
+}
+element.style {
+    font-size: 12px;
+    margin-top: 21px;
+}
+.mgr10 {
+    margin-right: 10px;
+}
+.cursor, label {
+    cursor: pointer;
+}
+.fr {
+    float: right;
+}
+element.style {
+    position: relative;
+    height: 146px;
+}
+.book-information {
+    margin: 10px -5px;
+}
+element.style {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.book-information .book-info {
+    border: 1px solid #dfdce3;
+    width: 315px;
+    margin: 5px;
+    position: relative;
+    float: left;
+    border-radius: 3px;
+}
+.book-information .book-info .close {
+    background-color: #fff;
+    color: #009dbd;
+    border: 1px solid #00B2D6;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    font-size: 15px;
+}
+.book-information .book-info .head-tit {
+    background-color: #f6f5f7;
+    padding: 10px;
+    overflow: hidden;
+    line-height: 22px;
+    border-radius: 3px 3px 0 0;
+}
+.book-information .book-info .head-tit li {
+    clear: both;
+}
+.book-information .book-info .head-tit li span {
+    float: left;
+    font-weight: bold;
+}
+.book-information .book-info .head-tit li i {
+    float: right;
+}
+i {
+    font-style: normal;
+}
+.book-information .book-info .con-box {
+    background-color: #fff;
+    padding: 10px 0;
+    overflow: hidden;
+    line-height: 22px;
+    border-radius: 0 0 3px 3px;
+}
+.book-information .book-info .con-box p {
+    color: #a6a3af;
+    padding-left: 10px;
+}
+.book-information .book-info .con-box a {
+    clear: both;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+}
+.book-information .book-info .con-box a span {
+    color: #2d2634;
+    float: left;
+    padding-left: 10px;
+}
+.book-information .book-info .con-box a i {
+    color: #00b2d6;
+    float: right;
+    padding-right: 10px;
+}
+i {
+    font-style: normal;
+}
 
 
 
+.orderlist {
+    line-height: 24px;
+    text-align: center;
+}
+.info{
+    display: flex;
+    justify-content: space-around;
+}
+.fill>div{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
 
 
 
