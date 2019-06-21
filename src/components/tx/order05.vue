@@ -374,7 +374,7 @@
             <span class="box2">腾讯QQ</span>
             <span class="box4">&nbsp;</span>
             <span class="box5">&nbsp;</span>
-            <a class="bind" type="weibo" onclick="oauthLogin('qq', 'bind', true)">点击绑定</a>
+            <a class="bind" type="weibo" onclick="oauthLogin('qq', 'bind', true)"></a>
           </li>
           <li class="data">
             <span class="box1 mgt3">

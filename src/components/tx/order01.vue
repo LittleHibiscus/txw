@@ -18,7 +18,7 @@
             <a class="fr mgr20" id="switch"><span class="arrow-down-douber"></span></a>
         </div>
         <div class="main_num" style="background-color: #fafafa;" id="queryBody">
-            <form id="queryForm" name="queryForm" method="post" action="/member/flight-order.php">
+            <!-- <form id="queryForm" name="queryForm" method="post" > -->
                 <input type="hidden" name="action" value="query">
 
                 <div class="loginbox" style="width:60%">
@@ -32,29 +32,29 @@
                                 <dt>手机号码</dt>
                                 <dd>
                                     <div class="item_box">
-                                        <input autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile1" id="mobile" class="item_fo" type="text" value="">
+                                        <input  style="width:200px;" autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile1" id="mobile" class="item_fo" type="text" value="">
                                     </div>
                                 </dd>
                             </dl>
                             <dl>
                                 <dt>图形码</dt>
-                                <dd>
-                                    <div class="item_box item_fo_x" style="width:132px;">
-                                        <input class="item_fo" maxlength="6" autocomplete="off" id="verify_code" type="text">
-                                        <div @click="refreshCode">
-                                            <sidentify :identifyCode="identifyCode"></sidentify>
-                                        </div>
+                                <dd style="float:left">
+                                    <div class="item_box " style="width:132px;">
+                                        <input v-model="vercode"  style="width:100px;" class="item_fo" maxlength="6" autocomplete="off" type="text">
                                     </div>
                                     <div class="fl">
                                         <span class="cur mgl5"></span>
                                     </div>
                                 </dd>
+                                <div @click="refreshCode" style="float:left;margin-left:-25px;">
+                                    <sidentify :identifyCode="identifyCode"></sidentify>
+                                </div>
                             </dl>
                             <dl>
                                 <dt>验证码</dt>
                                 <dd>
                                 <div class="item_box item_fo_x">
-                                    <input maxlength="6" autocomplete="off" tip="请输入验证码" errormsg="请输入6位数字的验证码" datatype="/^[0-9]{6}$/" name="authCode" class="item_fo" type="text">
+                                    <input style="width:200px;" maxlength="6" autocomplete="off" tip="请输入验证码" errormsg="请输入6位数字的验证码" datatype="/^[0-9]{6}$/" name="authCode" class="item_fo" type="text">
                                 </div>
                                 <div class="but_dxyzm mgl8" type="common" target="mobile" verifyid="verify_code">
                                     点击免费获取
@@ -101,14 +101,15 @@
                         </dl>
                     </li>
                 </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
         <!-- end -->
         <!-- 直接预订页面开始-->
-        <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="abl==true">
+        <!-- <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="dis==true"> -->
+        <div  v-show="dis==true">
             <div style="margin:20px; height:30px;width:850px">
-                <span class="fl pt3">订单开始时间：</span>
+                <span class="fl pt3" >订单开始时间：</span>
                 <div class="dateDiv">
                         <date-picker v-model="date1" fontSize="12px" fontWeight="600" padding="0"></date-picker>
                         <span class="dateImg"></span>
@@ -134,9 +135,9 @@
                     <option value="APPLYREFUND">退票申请</option>
                     <option value="REFUND">退票完成</option>
                 </select>
-                <div style="margin-left:15px;" class="fl delete cursor" id="btnSearch">确定</div>
+                <button style="margin-left:15px;" class="fl delete cursor" @click="con">确定</button>
             </div>
-        </form>
+        </div>
         <div id="flightList"></div>
 </div>
 </template>
@@ -152,7 +153,7 @@ export default {
             // 日期
             date1:"",
             date2:"",
-            
+            vercode:"",
             dis:true,
             identifyCode:'1mj4',
             identifyCodes:"1234567890wiserui",
@@ -163,7 +164,7 @@ export default {
     },
     created(){
         this.dis=this.$route.query.dis;
-        this.abl=this.$route.query.abl;
+
     },
     components:{
         sidentify,
@@ -171,6 +172,17 @@ export default {
         DatePicker
     },
     methods:{
+       con(){
+           this.axios.get("/txorder",{params:{
+               otag:6,
+               otime:'2019-06-19',
+               etime:'2019-06-21'
+           }}).then(res=>{
+               console.log("成功")
+           }).catch(err=>{
+               console.log("sorry");
+           })
+       },
        closesupplier(){
            this.showDialog=false;
        },
@@ -178,15 +190,22 @@ export default {
            this.showDialog=!this.showDialog;
        },
        change1(){
-           this.abl=true;
+
            this.dis=true;
        },
        change2(){
            this.dis=false;
-           this.abl=false;
+
        },
        randomNum(min,max){
            return Math.floor(Math.random()*(max-min)+min);
+       },
+       checkorder(){
+           if(this.vercode==this.identifyCode){
+               alert("验证通过！");
+           }else{
+               alert("验证失败！");
+           }
        },
        refreshCode(){
            this.identifyCode="";
@@ -198,11 +217,6 @@ export default {
                this.identifyCode+=this.identifyCodes[
                    this.randomNum(0,this.identifyCodes.length)
                ];
-           }
-       },
-       checkorder(){
-           if(this.vercode==this.identifyCode){
-               alert("好")
            }
        }
     }

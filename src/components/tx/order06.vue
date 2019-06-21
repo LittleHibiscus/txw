@@ -3,7 +3,7 @@
     <div class="tabA mgt10">
             <router-link :to="{path:'/order/order01',query:{abl:true}}">直接预订</router-link>
             <a class="active">跳转记录</a>
-            <router-link :to="{path:'/order/order01',query:{dis:false}}" class="cursor mgr10 fr" style="font-size:12px;margin-top:21px;">非会员订单查询</router-link>
+            <router-link :to="{path:'/order/order01',query:{dis:false}}" class="cursor fr" style="font-size:12px;margin-top:8px; margin-left:656px;color:#00b2d6;">非会员订单查询</router-link>
         </div>
         <div class="cboth"></div>
     <div class="book-information" style="position: relative; height: 146px;">
