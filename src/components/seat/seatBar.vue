@@ -323,6 +323,7 @@ export default {
 <style scoped>
     .searchBox{
         background-color:#f3f2f5;
+        
     }
     .searchBar{
         margin-left:13%;
