@@ -91,6 +91,7 @@
                                 alert(result.data.msg);
                                 sessionStorage.setItem("userName",userName.value);
                                 this.$router.push("/");
+                                this.$router.go(0)
                             }else{
                                 alert(result.data.msg);
                                 this.$router.push("/log");

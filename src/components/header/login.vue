@@ -55,7 +55,7 @@ export default {
       time: null
     };
   },
-  beforeUpdate(){
+  created(){
     var n=sessionStorage.getItem("userName");
     console.log(n);
     if(n){
