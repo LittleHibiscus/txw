@@ -1,5 +1,6 @@
 <template>
   <!-- @mouseleave="changeIsShow" -->
+  <!-- 日期输入框 -->
   <div class="zss-date-picker">
     <input
       :style="$attrs"
@@ -228,6 +229,7 @@ export default {
       let nextMonthDate = momnet(this.firstDate.join("-"))
         .startOf("month")
         .add(1, "month");
+      console.log(nextMonthDate);
       this.firstDate = nextMonthDate.format("YYYY-MM-DD").split("-");
       this.getDateArray();
     },
