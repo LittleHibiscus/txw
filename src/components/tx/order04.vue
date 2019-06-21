@@ -23,7 +23,7 @@
     </div>
     <div class="fill"  style="border-bottom:1px dotted #333;margin-top:15px;" v-show="sta">
         <div>
-           <input type="text" style="width:30px;margin-left:140px;border:1px solid black;">
+           <input type="text" style="width:30px;margin-left:175px;border:1px solid black;">
         <select style="border-color:#333;width:50px;margin-left:15px;" >
             <option style="width:80px;">护照</option>
             <option>身份证</option>
@@ -46,6 +46,7 @@
         
     </div>
     </div>
+    <div data-v-bb606852="" onclick="passengerDelete()" id="btnDelete" class="delete mgt10 mgl10">删 除</div>
  </div>
 </template>
 <script>

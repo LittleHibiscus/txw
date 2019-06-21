@@ -3,15 +3,15 @@
     <div class="left" id="leftSide" style="height: 600px;">
         <div class="left_lnfo">
             <dl>
-            <dd>{{huanyinghuilai}}<p><b>{{nicheng}}</b></p><p></p></dd>
+            <dd>欢迎回来<p><b>小渔圈圈。。。</b></p><p></p></dd>
             </dl>
         </div>
         <ul class="menu">
-            <router-link to="/order/order01"><li class="on">机票订单</li></router-link>
-            <router-link to="/order/order02"><li class="">来自手机</li></router-link>
-            <router-link to="/order/order03"><li class="">我的关注</li></router-link>
-            <router-link to="/order/order04"> <li class="">常用信息</li></router-link>
-            <router-link to="/order/order05"> <li class="">账号设置</li></router-link>
+            <router-link to="/order/order01"><li :class="status3" @click="change3">机票订单</li></router-link>
+            <router-link to="/order/order02"><li :class="status4" @click="change4">来自手机</li></router-link>
+            <router-link to="/order/order03"><li :class="status5" @click="change5">我的关注</li></router-link>
+            <router-link to="/order/order04"> <li :class="status6" @click="change6">常用信息</li></router-link>
+            <router-link to="/order/order05"> <li :class="status7" @click="change7">账号设置</li></router-link>
         </ul>
     </div> 
     <div>
@@ -25,18 +25,48 @@ import '../../../public/member1.css'
 export default {
     data(){
         return {
-            huanyinghuilai:"",
-            nicheng:""
+           status3:"on",
+           status4:"",
+           status5:"",
+           status6:"",
+           status7:""
         }
     },
-    mounted(){
-        var n=sessionStorage.getItem("userName");
-        if(n){
-            this.huanyinghuilai="欢迎回来"
-            this.nicheng=n
-        }else{
-            this.huanyinghuilai="未登录"
-            this.nicheng=""
+    methods:{
+        change3(){
+            this.status3="on";
+            this.status4="";
+            this.status5="";
+            this.status6="";
+            this.status7="";
+        },
+        change4(){
+            this.status3="";
+            this.status4="on";
+            this.status5="";
+            this.status6="";
+            this.status7="";
+        },
+        change5(){
+            this.status3="";
+            this.status4="";
+            this.status5="on";
+            this.status6="";
+            this.status7="";
+        },
+        change6(){
+            this.status3="";
+            this.status4="";
+            this.status5="";
+            this.status6="on";
+            this.status7="";
+        },
+        change7(){
+            this.status3="";
+            this.status4="";
+            this.status5="";
+            this.status6="";
+            this.status7="on";
         }
     }
 }

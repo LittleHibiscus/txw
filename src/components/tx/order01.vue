@@ -18,7 +18,7 @@
             <a class="fr mgr20" id="switch"><span class="arrow-down-douber"></span></a>
         </div>
         <div class="main_num" style="background-color: #fafafa;" id="queryBody">
-            <form id="queryForm" name="queryForm" method="post" action="/member/flight-order.php">
+            <!-- <form id="queryForm" name="queryForm" method="post" > -->
                 <input type="hidden" name="action" value="query">
 
                 <div class="loginbox" style="width:60%">
@@ -32,7 +32,7 @@
                                 <dt>手机号码</dt>
                                 <dd>
                                     <div class="item_box">
-                                        <input style="width:200px;" autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile1" id="mobile" class="item_fo" type="text" value="">
+                                        <input  style="width:200px;" autocomplete="off" tip="请输入订单联系人手机号码" errormsg="请输入有效的手机号码" maxlength="11" datatype="m" name="mobile1" id="mobile" class="item_fo" type="text" value="">
                                     </div>
                                 </dd>
                             </dl>
@@ -40,7 +40,7 @@
                                 <dt>图形码</dt>
                                 <dd style="float:left">
                                     <div class="item_box " style="width:132px;">
-                                        <input style="width:100px;" class="item_fo" maxlength="6" autocomplete="off" type="text">
+                                        <input v-model="vercode"  style="width:100px;" class="item_fo" maxlength="6" autocomplete="off" type="text">
                                     </div>
                                     <div class="fl">
                                         <span class="cur mgl5"></span>
@@ -96,19 +96,20 @@
                         <dl>
                             <dt>&nbsp;</dt>
                             <dd class="mgt5">
-                                <span id="querySubmitBtn" class="baocun buttonA fl" style="width: 170px; font-size: 14px;">查询订单</span>
+                                <span id="querySubmitBtn" class="baocun buttonA fl" style="width: 170px; font-size: 14px;" @click="checkorder">查询订单</span>
                             </dd>
                         </dl>
                     </li>
                 </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
         <!-- end -->
         <!-- 直接预订页面开始-->
-        <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="dis==true">
+        <!-- <form id="filterForm" name="filterForm" method="post" class="" action="/member/flight-order.php" v-show="dis==true"> -->
+        <div  v-show="dis==true">
             <div style="margin:20px; height:30px;width:850px">
-                <span class="fl pt3">订单开始时间：</span>
+                <span class="fl pt3" >订单开始时间：</span>
                 <div class="dateDiv">
                         <date-picker v-model="date1" fontSize="12px" fontWeight="600" padding="0"></date-picker>
                         <span class="dateImg"></span>
@@ -134,9 +135,9 @@
                     <option value="APPLYREFUND">退票申请</option>
                     <option value="REFUND">退票完成</option>
                 </select>
-                <div style="margin-left:15px;" class="fl delete cursor" onclick="$('#filterForm').submit()" id="btnSearch">确定</div>
+                <button style="margin-left:15px;" class="fl delete cursor" @click="con">确定</button>
             </div>
-        </form>
+        </div>
         <div id="flightList"></div>
 </div>
 </template>
@@ -152,7 +153,7 @@ export default {
             // 日期
             date1:"",
             date2:"",
-            
+            vercode:"",
             dis:true,
             identifyCode:'1mj4',
             identifyCodes:"1234567890wiserui",
@@ -175,6 +176,17 @@ export default {
         DatePicker
     },
     methods:{
+       con(){
+           this.axios.get("/txorder",{params:{
+               otag:6,
+               otime:'2019-06-19',
+               etime:'2019-06-21'
+           }}).then(res=>{
+               console.log("成功")
+           }).catch(err=>{
+               console.log("sorry");
+           })
+       },
        closesupplier(){
            this.showDialog=false;
        },
@@ -189,6 +201,13 @@ export default {
        },
        randomNum(min,max){
            return Math.floor(Math.random()*(max-min)+min);
+       },
+       checkorder(){
+           if(this.vercode==this.identifyCode){
+               alert("验证通过！");
+           }else{
+               alert("验证失败！");
+           }
        },
        refreshCode(){
            this.identifyCode="";

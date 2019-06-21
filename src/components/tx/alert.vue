@@ -36,47 +36,45 @@ export default {
     }
 }
 </script>
-}
-</script>
 <style scoped>
     .dialog{
         position:fixed;
         top:341px;
         left:748px;
     }
-        .dialog_mask{
-            position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
+    .dialog_mask{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+    }
+    .dialog_container{
+        background: #fff;
+        width: 600px;
+        height: 150px;
+        position: relative;
+        border-radius: 10px;
+        margin: 0 auto;
         }
-        .dialog_container{
-                background: #fff;
-    width: 600px;
-    height: 150px;
-    position: relative;
-    border-radius: 10px;
-    margin: 0 auto;
+    .dialog_content{
+        text-align: center;
+        padding-top: 30px;
         }
-        .dialog_content{
-            text-align: center;
-    padding-top: 30px;
+    .dialog_btn{
+        margin-top: 20px;
         }
-        .dialog_btn{
-            margin-top: 20px;
-        }
-        .dialog_btn a{
-            background: rgb(14, 68, 104);
-                padding: 2px 30px;
-    border-radius: 5px;
-    color: #fff;
-    text-decoration: none;
+    .dialog_btn a{
+        background: rgb(14, 68, 104);
+        padding: 2px 30px;
+        border-radius: 5px;
+        color: #fff;
+        text-decoration: none;
         width: 50px;
-    display: inline-block;
+        display: inline-block;
         }
-        .dialog_btn a:nth-child(2){
-                margin-left: 20px;
+    .dialog_btn a:nth-child(2){
+        margin-left: 20px;
         }
 </style>
