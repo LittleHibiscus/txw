@@ -22,7 +22,6 @@ export default {
     return {
       // 数据库获取机舱名字
       dropdownList: ["经济舱", "高端经济舱", "商务舱", "头等舱"],
-
       isHiddenDropdownList: true,
       dropdownListItem: "经济舱",
       classOn: "经济舱"
@@ -33,6 +32,7 @@ export default {
       this.isHiddenDropdownList = status;
       this.dropdownListItem = title;
       this.classOn = title;
+      this.$emit("listValueChange", title);
     }
   },
   components: {}

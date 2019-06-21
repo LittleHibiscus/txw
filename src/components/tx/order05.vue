@@ -17,7 +17,7 @@
                 type="hidden"
                 autocomplete="off"
                 name="_token_"
-                value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
+                value=""
               >
               <dl>
                 <dt>昵称</dt>
@@ -52,7 +52,7 @@
                 type="hidden"
                 autocomplete="off"
                 name="_token_"
-                value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
+                value=""
               >
               <dl>
                 <dt>新手机</dt>
@@ -90,7 +90,6 @@
                       <img
                         onclick="refreshCc();"
                         align="absmiddle"
-                        src="captcha.php?r=1560259023"
                         id="verify_code_img"
                         target="captcha"
                         title="点击刷新"
@@ -135,7 +134,6 @@
                 type="hidden"
                 autocomplete="off"
                 name="_token_"
-                value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
               >
               <dl>
                 <dt>新邮箱</dt>
@@ -171,9 +169,7 @@
               <input
                 type="hidden"
                 autocomplete="off"
-                name="_token_"
-                value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
-              >
+                name="_token_">
               <dl>
                 <dt>原密码</dt>
                 <dd>
@@ -203,8 +199,7 @@
                       maxlength="32"
                       autocomplete="off"
                       name="password"
-                      class="item_fo"
-                    >
+                      class="item_fo">
                   </div>
                 </dd>
               </dl>
@@ -243,9 +238,7 @@
               <input
                 type="hidden"
                 autocomplete="off"
-                name="_token_"
-                value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
-              >
+                name="_token_">
               <dl>
                 <dt>密码:</dt>
                 <dd>
@@ -256,8 +249,7 @@
                       data-type="*"
                       autocomplete="off"
                       name="questionPassword"
-                      class="item_fo"
-                    >
+                      class="item_fo">
                   </div>
                 </dd>
               </dl>
@@ -432,9 +424,7 @@
             <input
               type="hidden"
               autocomplete="off"
-              name="_token_"
-              value="VFQBAVAGXQdRBx4GBwcFBwRXVlQCUgRVBQ4AUlsEBgADCR1TVVkFAlcHVw=="
-            >
+              name="_token_">
             <div class="fs14 ac lh24 mgb20">请输入你的账户密码后确认注销！</div>
             <dl>
               <dt>账号密码：</dt>
