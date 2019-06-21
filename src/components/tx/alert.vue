@@ -15,33 +15,33 @@
 </template>
 <script>
 export default {
-  props: {
-    showDialog: {
-      type: Boolean,
-      default: false
+    props: {
+      showDialog:{
+          type:Boolean,
+          default:false
+      },
+      msg:{
+          type:String,
+          default:'提示消息'
+      },
+      type:{
+          type:Number,
+          default:1
+      }
     },
-    msg: {
-      type: String,
-      default: "提示消息"
-    },
-    typess: {
-      type: Number,
-      default: 1
+    methods:{
+        close(){
+            this.$emit('closesupplier');
+        }
     }
-  },
-  methods: {
-    close() {
-      this.$emit("closesupplier");
-    }
-  }
-};
+}
 </script>
 <style scoped>
-.dialog {
-  position: fixed;
-  top: 341px;
-  left: 748px;
-}
+    .dialog{
+        position:fixed;
+        top:341px;
+        left:748px;
+    }
 .dialog_mask {
   position: fixed;
   left: 0;
@@ -57,24 +57,24 @@ export default {
   position: relative;
   border-radius: 10px;
   margin: 0 auto;
-}
+        }
 .dialog_content {
   text-align: center;
   padding-top: 30px;
-}
+        }
 .dialog_btn {
   margin-top: 20px;
-}
+        }
 .dialog_btn a {
   background: rgb(14, 68, 104);
   padding: 2px 30px;
   border-radius: 5px;
   color: #fff;
   text-decoration: none;
-  width: 50px;
+        width: 50px;
   display: inline-block;
-}
+        }
 .dialog_btn a:nth-child(2) {
   margin-left: 20px;
-}
+        }
 </style>

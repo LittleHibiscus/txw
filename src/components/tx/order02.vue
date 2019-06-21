@@ -7,7 +7,7 @@
         <div class="book-information">
                     	<div class="cboth"></div>
 	        <div class="mgt50 ac">暂时还没有来自手机的航班信息...<img src="https://secure.tianxun.com/res/member/images/plane-fly-icon.png" class="mgl10"></div>
-        	        </div>
+        </div>
      </div>
 </template>
 <script>

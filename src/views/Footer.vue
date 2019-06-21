@@ -90,13 +90,13 @@ export default {
 .seo-links {
   color: #666;
   line-height: 20px;
-  min-width: 1120px;
+  /* min-width: 1120px; */
   background: #f3f2f5;
   margin-bottom: 20px;
   padding: 10px 0;
   height: 100%;
   overflow: hidden;
-  min-width: 1120px;
+  /* min-width: 1120px; */
   border-bottom: none;
 }
 a {

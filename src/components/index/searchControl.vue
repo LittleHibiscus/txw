@@ -112,6 +112,7 @@ import searchOptionSwitch from "./search-option-switch";
 import datePicker from "./DatePicker";
 import optionPassagerBox from "./option-passager-box.vue";
 import seatTable from "../seat/seatTable";
+
 export default {
   data() {
     return {

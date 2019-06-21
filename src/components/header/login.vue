@@ -46,8 +46,8 @@ import { setTimeout, clearTimeout } from "timers";
 export default {
   data() {
     return {
-      wel:"",
-      clearfixShow:true,
+      wel: "",
+      clearfixShow: true,
       // 登陆/注册 按钮下的列表
       list: [
         { iconName: "icon_flight", title: "机票订单" },
@@ -60,18 +60,18 @@ export default {
       time: null
     };
   },
-  created(){
-    var n=sessionStorage.getItem("userName");
+  created() {
+    var n = sessionStorage.getItem("userName");
     console.log(n);
-    if(n){
-      this.clearfixShow=false;
-      this.wel=`欢迎回来：${n}`;
+    if (n) {
+      this.clearfixShow = false;
+      this.wel = `欢迎回来：${n}`;
     }
   },
   methods: {
-    cancel(){
-      this.clearfixShow=true;
-      sessionStorage.removeItem('userName');
+    cancel() {
+      this.clearfixShow = true;
+      sessionStorage.removeItem("userName");
     },
     changeListStatus(s) {
       if (!s) {

@@ -1,10 +1,8 @@
 <template>
   <div class="type" id="search-option-switch">
-    <search-option-switchitem v-for="(t,i) of list" :key="i" :title="t.title" :checked=t.checked></search-option-switchitem>
+    <search-option-switchitem v-for="(t,i) of list" :key="i" :title="t.title" :checked="t.checked"></search-option-switchitem>
     <a class="mgl20" style="display: none;">搜索历史</a>
-    <a
-      href="javascript:;"
-    >订单查询</a>
+    <a href="javascript:;" class="fr">订单查询</a>
   </div>
 </template>
 <script>

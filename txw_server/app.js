@@ -6,7 +6,7 @@ const mysql = require("mysql");
 var pool = mysql.createPool({
   host:"127.0.0.1",
   user:"root",
-  password:"root",
+  password:"",
   port:3306,
   database:"txw",
   connectionLimit:15
@@ -21,7 +21,7 @@ server.use(express.static("public"));
 const cors = require("cors");
 server.use(cors({
   origin:["http://127.0.0.1:8080",
-  "http://localhost:8080"],
+  "http://localhost:8080","http://localhost"],
   credentials:true
 }));
 //6:添加session功能
