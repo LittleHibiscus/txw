@@ -271,7 +271,7 @@
                     this.axios.get(url,{params:obj}).then((result)=>{
                         //console.log(result);
                         alert("注册成功");
-                        this.$router.push("/log");
+                        this.$router.go(0);
                     })
                 }
             },
