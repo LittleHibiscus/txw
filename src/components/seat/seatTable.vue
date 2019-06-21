@@ -8,18 +8,6 @@
             <a href="javascript:;" :class="{aChecked: index == tab_nav.ul1}"  
              v-for="(item,index) of list1" :key="index" 
              @click="cbDiv1Click('ul1',index)">{{item}}</a>
-            <!--
-            <a href="javascript:;" :class="TList ? 'aChecked' : '' " 
-            @click="cbDiv1A">Top20</a>
-            <a href="javascript:;" :class="AList ? 'aChecked' : '' " 
-            @click="cbDiv1B">亚洲/大洋洲</a>
-            <a href="javascript:;" :class="UList ? 'aChecked' : '' " 
-            @click="cbDiv1C">美洲</a>
-            <a href="javascript:;" :class="EList ? 'aChecked' : '' " 
-            @click="cbDiv1D">欧洲</a>
-            <a href="javascript:;" :class="Flist ? 'aChecked' : '' " 
-            @click="cbDiv1E">非洲</a>
-            -->
         </div>
         <div class="cbDiv2"  v-for="(item,index) of List11" 
             :key="index" v-show="index==tab_nav.ul1">
@@ -32,14 +20,7 @@
              v-for="(item,index) of list2" :key="index" 
              @click="cbDiv3Click('ul2',index)">
              {{item}}</a>
-            <!--
-            <a href="javascript:;" class="aChecked">热门</a>
-            <a href="javascript:;">ABCDE</a>
-            <a href="javascript:;">FGHIJ</a>
-            <a href="javascript:;">KLMN</a>
-            <a href="javascript:;">OPQRST</a>
-            <a href="javascript:;">UVWXYZ</a>
-            -->
+
         </div>
         <div class="cbDiv4"  v-for="(item,index) of List22" 
             :key="index" v-show="index==tab_nav.ul2">
@@ -64,20 +45,20 @@ export default {
         return{
             list1:["Top20","亚洲/大洋洲","美洲","欧洲","非洲"],
             List11:[
-                [123,123,123,123,123,123,123,123,123,123,123,123],
-                [234,123,123,123,123,123,123,123,123,123,123,123],
-                [323,123,123,123,123,123,123,123,123,123,123,123],
-                [423,123,123,123,123,123,123,123,123,123,123,123],
-                [523,123,123,123,123,123,123,123,123,123,123,123]
+                ["香港","台北","高雄","澳门","新加坡","曼谷","东京","大阪","名古屋","首尔","釜山","纽约","洛杉矶","芝加哥"],
+                ["香港","新加坡","首尔","曼谷","吉隆坡","釜山","东京","大阪","名古屋"],
+                ["阿根廷","巴哈马","伯利兹","美国","玻利维亚","巴西","巴巴多斯","加拿大","哥伦比亚","智利"],
+                ["芬兰","瑞典","挪威","冰岛","丹麦","俄罗斯","乌克兰","奥地利","德国","捷克","波兰","英国","荷兰","法国"],
+                ["南非","刚果","苏丹","尼日利亚","利比亚","摩洛哥","突尼斯"]
             ],
             list2:["热门","ABCDE","FGHIJ","KLMN","OPQRST","UVWXYZ"],
             List22:[
-                [123,123,123,123,123,123,123,123,123,123,123,123],
-                [234,123,123,123,123,123,123,123,123,123,123,123],
-                [323,123,123,123,123,123,123,123,123,123,123,123],
-                [423,123,123,123,123,123,123,123,123,123,123,123],
-                [523,123,123,123,123,123,123,123,123,123,123,123],
-                [623,123,123,123,123,123,123,123,123,123,123,123],
+                ["北京","上海","天津","山东","广东","厦门","深圳","青岛","新疆","山西","珠海","南宁","四川","甘肃"],
+                ["上海","北京","四川","济南","深圳","厦门","广东","珠海","重庆","南宁","青岛","山西","天津","山东"],
+                ["福建","上海","天津","广西","广东","厦门","深圳","青岛","广西","南宁","珠海","山西","四川","甘肃"],
+                ["上海","南宁","四川","珠海","深圳","厦门","广东","山东","重庆","北京","青岛","山西","天津","山东"],
+                ["内蒙古","西藏","天津","山东","广东","厦门","深圳","青岛","新疆","南宁","珠海","新疆","四川","甘肃"],
+                ["江苏","辽宁","四川","青海","深圳","福建","广东","广西","浙江","南宁","青岛","哈尔滨","天津","山东"],
             ],
             tab_nav:{
                 ul1:0,
@@ -95,7 +76,7 @@ export default {
             this.tab_nav["ul2"]=index;
             
         },
-        getCity(city){
+        getCity(city){                                                                                                  
             this.$emit("selectCity",city);
         },
         // 关闭列表
@@ -109,7 +90,7 @@ export default {
 <style scoped>
     .cityBox{
         width:540px;
-        background:#6aa3ed;
+        background:#ddd;
     }
     .stHeader{
         background-color:#00B2D6;
