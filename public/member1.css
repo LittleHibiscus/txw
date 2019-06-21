@@ -225,11 +225,6 @@ button {
 .mgr20 {
     margin-right: 20px;
 }
-
-.fr {
-    float: right;
-}
-
 a {
     cursor: pointer;
     color: #00b2d6;
@@ -265,14 +260,7 @@ element.style {
     padding-top: 3px;
 }
 
-.fl {
-    float: left;
-}
-
-span,
-a,
-input,
-button {
+span, a, input, button {
     outline: 0;
 }
 
@@ -298,10 +286,6 @@ button {
 
 .mgl30 {
     margin-left: 30px;
-}
-
-.fl {
-    float: left;
 }
 
 .pt3 {
@@ -356,15 +340,6 @@ option {
     min-height: 1.2em;
     padding: 0px 2px 1px;
 }
-
-element.style {
-    margin-left: 15px;
-}
-
-.delete {
-    width: 55px;
-}
-
 .delete {
     width: 100px;
     height: 28x;
@@ -380,11 +355,7 @@ element.style {
     -moz-border-radius: 5rem;
     -webkit-border-radius: 5rem;
     border-radius: 5rem;
-
-}
-
-.fl {
-    float: left;
+    
 }
 
 .cboth {
@@ -1067,11 +1038,6 @@ b {
     display: block;
 }
 
-element.style {
-    font-size: 12px;
-    margin-top: 21px;
-}
-
 .mgr10 {
     margin-right: 10px;
 }
@@ -1081,25 +1047,9 @@ label {
     cursor: pointer;
 }
 
-.fr {
-    float: right;
-}
-
-element.style {
-    position: relative;
-    height: 146px;
-}
-
 .book-information {
     margin: 10px -5px;
 }
-
-element.style {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-}
-
 .book-information .book-info {
     border: 1px solid #dfdce3;
     width: 315px;
