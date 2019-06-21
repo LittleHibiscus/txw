@@ -40,7 +40,7 @@
                                 <dt>图形码</dt>
                                 <dd>
                                     <div class="item_box item_fo_x" style="width:132px;">
-                                        <input class="item_fo" maxlength="6" autocomplete="off" id="verify_code" type="text">
+                                        <input class="item_fo" maxlength="6" autocomplete="off" id="verify_code" type="text" v-model="vercode">
                                         <div @click="refreshCode">
                                             <sidentify :identifyCode="identifyCode"></sidentify>
                                         </div>
@@ -96,7 +96,7 @@
                         <dl>
                             <dt>&nbsp;</dt>
                             <dd class="mgt5">
-                                <span id="querySubmitBtn" class="baocun buttonA fl" style="width: 170px; font-size: 14px;">查询订单</span>
+                                <span id="querySubmitBtn" class="baocun buttonA fl" style="width: 170px; font-size: 14px;" @click="checkorder">查询订单</span>
                             </dd>
                         </dl>
                     </li>
@@ -133,7 +133,7 @@
                     <option value="APPLYREFUND">退票申请</option>
                     <option value="REFUND">退票完成</option>
                 </select>
-                <div style="margin-left:15px;" class="fl delete cursor" onclick="$('#filterForm').submit()" id="btnSearch">确定</div>
+                <div style="margin-left:15px;" class="fl delete cursor" id="btnSearch">确定</div>
             </div>
         </form>
         <div id="flightList"></div>
@@ -146,6 +146,7 @@ import supplier from "./alert.vue"
 export default {
     data(){
         return {
+            vercode:"",
             dis:true,
             abl:true,
             identifyCode:'1mj4',
@@ -159,11 +160,6 @@ export default {
         this.dis=this.$route.query.dis;
         this.abl=this.$route.query.abl;
     },
-   /* watch:{
-         '$route'(){
-             this.dis=false;
-         }
-    },*/
     components:{
         sidentify,
         supplier
@@ -180,7 +176,8 @@ export default {
            this.dis=true;
        },
        change2(){
-           this.dis=false
+           this.dis=false;
+           this.abl=false;
        },
        randomNum(min,max){
            return Math.floor(Math.random()*(max-min)+min);
@@ -195,6 +192,11 @@ export default {
                this.identifyCode+=this.identifyCodes[
                    this.randomNum(0,this.identifyCodes.length)
                ];
+           }
+       },
+       checkorder(){
+           if(this.vercode==this.identifyCode){
+               alert("好")
            }
        }
     }

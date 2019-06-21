@@ -36,8 +36,6 @@ export default {
     }
 }
 </script>
-}
-</script>
 <style scoped>
     .dialog{
         position:fixed;
