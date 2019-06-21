@@ -1,17 +1,17 @@
-<template id="dialog">
-        <div class="dialog" v-if="showDialog">
-            <div class="dialog_mask"></div>
-            <div class="dialog_container">
-                <div class="dialog_content">
-                    <div class="dialog_content_top" v-text="msg">提示内容</div>
-                    <div class="dialog_btn">
-                        <a v-if="type==1" href="javascript:;" class="btn" @click="close">确定</a>
-                        <a v-if="type==2" href="javascript:;" class="btn" @click="close">取消</a>
-                        <a v-if="type==3" href="javascript:;" class="btn" @click="login">去登录</a>
-                    </div>
-                </div>
-            </div>
+<template>
+  <div class="dialog" v-if="showDialog">
+    <div class="dialog_mask"></div>
+    <div class="dialog_container">
+      <div class="dialog_content">
+        <div class="dialog_content_top" v-text="msg">提示内容</div>
+        <div class="dialog_btn">
+          <a v-if="type==1" href="javascript:;" class="btn" @click="close">确定</a>
+          <a v-if="type==2" href="javascript:;" class="btn" @click="close">取消</a>
+          <a v-if="type==3" href="javascript:;" class="btn" @click="login">去登录</a>
         </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {

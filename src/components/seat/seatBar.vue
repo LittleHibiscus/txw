@@ -20,59 +20,7 @@
                     <div @mouseleave="div1openHidden" @mouseenter="div1openShow">
                         <seatTable v-show="div1open" @closeCityBox="closeCityBox"  @selectCity="selectCityStart"></seatTable>
                     </div>
-                    <!--隐藏栏-->
-                    <!--
-                    <div class="searchCity" v-show="div1open">
-                        <div class="cityBox">
-                            <header class="stHeader">
-                                热门城市(可直接输入中文名/拼音/英文名)<span @click="close">x</span>
-                            </header>
-                            <div class="cbDiv1">
-                                
-                                <span>国家/地区</span>
-                                <a href="javascript:;" :class="continent1? 'aChecked' : ''"
-                                 @click="continentC1">Top20</a>
-                                <a href="javascript:;" :class="continent2? 'aChecked' : ''"
-                                 @click="continentC2">亚洲/大洋洲</a>
-                                <a href="javascript:;" :class="continent3? 'aChecked' : ''"
-                                 @click="continentC3">美洲</a>
-                                <a href="javascript:;" :class="continent4? 'aChecked' : ''"
-                                 @click="continentC4">欧洲</a>
-                                <a href="javascript:;" :class="continent5? 'aChecked' : ''"
-                                 @click="continentC5">非洲</a>
-                            </div>
-                            
-                            <div class="cbDiv2">
-                                <a href="javascript:;" v-for="(item,index) of List1" 
-                                :key="index" :id="index" @click="cbDiv2Click">
-                                {{item}}</a>
-                            </div>
-                            
-                            <div class="cbDiv3">
-                                <span>国内城市</span>
-                                <a href="javascript:;" :class="city1? 'aChecked' : ''"
-                                 @click="cityC1">热门</a>
-                                <a href="javascript:;" :class="city2? 'aChecked' : ''"
-                                 @click="cityC2">ABCDE</a>
-                                <a href="javascript:;" :class="city3? 'aChecked' : ''"
-                                 @click="cityC3">FGHIJ</a>
-                                <a href="javascript:;" :class="city4? 'aChecked' : ''"
-                                 @click="cityC4">KLMN</a>
-                                <a href="javascript:;" :class="city5? 'aChecked' : ''"
-                                 @click="cityC5">OPQRST</a>
-                                <a href="javascript:;" :class="city6? 'aChecked' : ''"
-                                 @click="cityC6">UVWXYZ</a>
-                            </div>
-                            
-                            <div class="cbDiv4">
-                                <a href="javascript:;" v-for="(item,index) of List2" 
-                                :key="index" :id="index" @click="cbDiv4Click">
-                                {{item}}</a>
-                            </div>
-                            <div class="cbDiv5"></div>
-                        </div>
-                    </div>
-                    -->
+
                 </div>
                 <!--切换箭头-->
                 <span @click="switchImg">
@@ -87,59 +35,7 @@
                     <div @mouseleave="div2openHidden" @mouseenter="div2openShow">
                        <seatTable v-show="div2open" @closeCityBox="closeCityBox" @selectCity="selectCityEnd"></seatTable>
                     </div>
-                    <!--隐藏栏-->
-                    <!--
-                    <div class="searchCity" v-show="div2open">
-                        <div class="cityBox">
-                            <header class="stHeader">
-                                热门城市(可直接输入中文名/拼音/英文名)<span @click="close">x</span>
-                            </header>
-                            <div class="cbDiv1">
-                               
-                                <span>国家/地区</span>
-                                <a href="javascript:;" :class="continent1? 'aChecked' : ''"
-                                 @click="continentC1">Top20</a>
-                                <a href="javascript:;" :class="continent2? 'aChecked' : ''"
-                                 @click="continentC2">亚洲/大洋洲</a>
-                                <a href="javascript:;" :class="continent3? 'aChecked' : ''"
-                                 @click="continentC3">美洲</a>
-                                <a href="javascript:;" :class="continent4? 'aChecked' : ''"
-                                 @click="continentC4">欧洲</a>
-                                <a href="javascript:;" :class="continent5? 'aChecked' : ''"
-                                 @click="continentC5">非洲</a>
-                            </div>
-                         
-                            <div class="cbDiv2">
-                                <a href="javascript:;" v-for="(item,index) of List1" 
-                                :key="index" :id="index" @click="cbDiv2Click">
-                                {{item}}</a>
-                            </div>
-                          
-                            <div class="cbDiv3">
-                                <span>国内城市</span>
-                                <a href="javascript:;" :class="city1? 'aChecked' : ''"
-                                 @click="cityC1">热门</a>
-                                <a href="javascript:;" :class="city2? 'aChecked' : ''"
-                                 @click="cityC2">ABCDE</a>
-                                <a href="javascript:;" :class="city3? 'aChecked' : ''"
-                                 @click="cityC3">FGHIJ</a>
-                                <a href="javascript:;" :class="city4? 'aChecked' : ''"
-                                 @click="cityC4">KLMN</a>
-                                <a href="javascript:;" :class="city5? 'aChecked' : ''"
-                                 @click="cityC5">OPQRST</a>
-                                <a href="javascript:;" :class="city6? 'aChecked' : ''"
-                                 @click="cityC6">UVWXYZ</a>
-                            </div>
-                            
-                            <div class="cbDiv4">
-                                <a href="javascript:;" v-for="(item,index) of List2" 
-                                :key="index" :id="index" @click="cbDiv4Click">
-                                {{item}}</a>
-                            </div>
-                            <div class="cbDiv5"></div>
 
-                        </div>
-                    </div>-->
                 </div>
                 <!--出发时间-->
                 <div class="div3">
@@ -194,15 +90,15 @@
                         </div>
                    </div>
                 </div>
-                <button class="btn">搜索</button>
+                <a class="btn" href="http://et.airchina.com.cn/InternetBooking/AirFareFamiliesFlexibleForward.do">搜索</a>
             </div>
         </div>
         <table></table>        
     </div>
 </template>
 <script>
-import DatePicker from "../index/DatePicker"
-import seatTable from "./seatTable"
+import DatePicker from "../index/DatePicker";
+import seatTable from "./seatTable";
 export default {
 
     data(){
@@ -210,26 +106,11 @@ export default {
             // 日历选择框日期
             date1:"",
             date2:"",
-            List1:["123","123","1232","1123","123","123","1223","123","123","13","123","123"],
-            List2:["1434","123","1232","1123","123","4","23","43","623","13","123","123"],
             div1Text:"中国(CN)",
             div2Text:"所有地点",
             div1open:false,
             div2open:false,
             div5open:false,
-            //
-            continent1:true,
-            continent2:false,
-            continent3:false,
-            continent4:false,
-            continent5:false,
-            //
-            city1:true,
-            city2:false,
-            city3:false,
-            city4:false,
-            city5:false,
-            city6:false,
             //
             val1:1,
             val2:0,
@@ -323,6 +204,7 @@ export default {
 <style scoped>
     .searchBox{
         background-color:#f3f2f5;
+        
     }
     .searchBar{
         margin-left:13%;
@@ -412,6 +294,8 @@ export default {
         font-size: 18px;
         color: #fff;
         border: none;
+        text-align:center;
+        line-height:36px
     }
     .btn:hover{
         background-color:#00D775;
@@ -464,82 +348,6 @@ export default {
     .passengerKind>img{
         width:20px;height:20px
     }
-    /*
-    .div3Time{
-        width:80%;
-        height:35px;
-        position:absolute;
-        right:0;
-        top:0;
-        font-weight:200;
-    }
-    */
-    /***************************************************************************/
-    /*
 
-    .cityBox{
-        width:540px;
-    }
-    .stHeader{
-        background-color:#00B2D6;
-        font-size:16px;
-        color: #fff;
-        padding:1% 2%;
-        height:33px;
-        line-height:33px;
-        position: relative;
-        font-weight: 700;
-    }
-    .stHeader>span{
-        position: absolute;
-        right:20px;top:10px;
-        width:25px;
-        height:25px;
-        border-radius:50%;
-        line-height:22px;
-        text-align: center;
-        font-size:20px;
-        cursor:pointer;
-    }
-    .stHeader>span:hover{
-        background-color:#f6f5f7;
-        color: #00B2D6;
-    }
-    .cbDiv1,.cbDiv3{
-        margin:10px 10px 8px 10px;
-        border-bottom:1px solid #dfe0e6;
-    }
-    .cbDiv1>span,.cbDiv3>span{
-        font-size:16px;
-        margin-right:10px;
-    }
-    .cbDiv1>a,.cbDiv3>a{
-        display:inline-block;
-        text-decoration: none;
-        color: #00b2d6;
-        font-size:12px;
-        margin:0 5px;padding:2px 8px;
-        border-radius:3px 3px 0 0;
-    }
-    .cbDiv2,.cbDiv4{
-        display:flex;
-        flex-wrap:wrap;
-        margin:5px;
-    }
-    .cbDiv2>a,.cbDiv4>a{
-        display:inline-block;
-        width: 14.6%;
-        padding-left:2%;
-        color: #453d54;
-    }
-    .cbDiv5{
-        margin-bottom:15px;
-    }
-    .aChecked{
-        background-color: #00b2d6;
-        color: #fff !important;
-    }
-
-    */
 </style>
 

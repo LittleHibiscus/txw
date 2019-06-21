@@ -95,3 +95,58 @@ server.get("/login",(req,res)=>{
 });
 
 //3:查询问题列表
+
+//4:查询目的地数据列表
+server.get("/txplace",(req,res)=>{
+ 
+  //2:sql
+  var sql =" SELECT seid,saddresscity,eaddresscity,caddresscity,splanecompany,eplanecompany,directflyprice,roundflyprice,stime,etime "; 
+      sql+=" FROM tx_place";
+
+  //3:返回结果 
+  pool.query(sql,[],(err,result)=>{
+    if(err)throw err;
+    if(result.length==0){
+      res.send({code:-1,msg:"查询无结果"});
+    }else{
+      res.send({code:1,msg:"查询成功",data:result});
+    }
+  });
+});
+
+//查询订票数据列表
+
+//4:查询目的地数据列表
+server.get("/txorder",(req,res)=>{
+
+  var {otag,otime,etime} = req.query;
+ 
+  //http://127.0.0.1:3000/txorder?otag=6&otime=2019-06-19&etime=2019-06-21
+ 
+  var sql = " SELECT OID,ORDERID,pid,Aircrew,OTIME,OTAG,MONEY,trip,flighttype,sairport,saddresscity,eairport, ";
+      sql += " eaddresscity,caddresscity,stime,etime,flytime,aircompany,aviationNumber,aircrafttype,cid,mailaddress " ;
+      sql += " from tx_order where OTAG=? AND (OTIME BETWEEN ? and ?)";
+
+  //3:返回结果 
+
+  pool.query(sql,[otag,otime,etime],(err,result)=>{
+    if(err)throw err;
+
+    if(result.length==0){
+      res.send({code:-1,msg:"查询无结果"});
+    }else{
+      res.send({code:1,msg:"查询成功",data:result});
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
